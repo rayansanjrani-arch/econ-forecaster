@@ -4,11 +4,11 @@ df = pd.read_csv("predictions.csv")
 done = df.dropna(subset=["outcome"]).copy()
 
 def brier(row):
-    actual = {"hot": 0, "inline": 0, "cool": 0}
+    actual = {"above": 0, "inline": 0, "below": 0}
     actual[row["outcome"]] = 1
-    return ((row["p_hot"] - actual["hot"]) ** 2
+    return ((row["p_above"] - actual["above"]) ** 2
             + (row["p_inline"] - actual["inline"]) ** 2
-            + (row["p_cool"] - actual["cool"]) ** 2)
+            + (row["p_below"] - actual["below"]) ** 2)
 
 done["brier"] = done.apply(brier, axis=1)
 print(done[["release", "indicator", "outcome", "brier"]])
