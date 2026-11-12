@@ -1,3 +1,3 @@
 release,indicator,made_on,p_above,p_inline,p_below,outcome,note
 2026-11-10,core_cpi_mom,2026-11-10,0.49,0.145,0.366,above,backfilled from first model - not a true test
-2026-11-12,initial_claims,2026-11-12,0.353,0.293,0.353,,"forecast 194,750 (4-week average), band +/-3000"
+2026-11-12,initial_claims,2026-11-12,0.353,0.293,0.353,above,"forecast 194,750 (4-week average), band +/-3000"
