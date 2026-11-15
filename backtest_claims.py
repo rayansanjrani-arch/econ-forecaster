@@ -1,5 +1,6 @@
 import math
 import pandas as pd
+from forecast_utils import classify_band_outcome
 
 URL = "https://fred.stlouisfed.org/graph/fredgraph.csv?id=ICSA"
 BAND = 3000
@@ -24,12 +25,7 @@ for i in range(len(df) - WEEKS, len(df)):
     p_below = phi(-BAND / sd)
     p_in = 1 - p_above - p_below
 
-    if actual > f + BAND:
-        out = "above"
-    elif actual < f - BAND:
-        out = "below"
-    else:
-        out = "inline"
+    out = classify_band_outcome(actual, f, BAND)
 
     hit = {"above": 0, "inline": 0, "below": 0}
     hit[out] = 1

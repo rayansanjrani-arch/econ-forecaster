@@ -1,5 +1,6 @@
 import math
 import pandas as pd
+from forecast_utils import classify_band_outcome
 
 URL = "https://fred.stlouisfed.org/graph/fredgraph.csv?id=ICSA"
 BAND = 3000
@@ -32,7 +33,7 @@ def run(bias_weeks, shrink):
         p_below = phi((base - BAND - mu) / sd)
         p_in = 1 - p_above - p_below
 
-        out = "above" if actual > base + BAND else "below" if actual < base - BAND else "inline"
+        out = classify_band_outcome(actual, base, BAND)
         hit = {"above": 0, "inline": 0, "below": 0}
         hit[out] = 1
         scores.append((p_above - hit["above"]) ** 2

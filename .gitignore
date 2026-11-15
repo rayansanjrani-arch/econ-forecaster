@@ -4,3 +4,4 @@ __pycache__/
 *.key
 .ipynb_checkpoints/
 .vscode/
+predictions.csv.tmp

@@ -1,6 +1,8 @@
 import sys
 import numpy as np
 import pandas as pd
+from prediction_log import append_prediction
+from forecast_utils import round_half_up
 
 if len(sys.argv) < 4:
     sys.exit("Usage: python predict_cpi.py CORE_FC HEADLINE_FC RELEASE_DATE [save]")
@@ -27,7 +29,7 @@ core_sd = robust_sd(load("CPILFESL"))
 head_sd = robust_sd(load("CPIAUCSL"))
 
 def r1(x):                      # round half up to one decimal, like published figures
-    return float(np.floor(x * 10 + 0.5) / 10)
+    return round_half_up(x, 1)
 
 cons_core, cons_head = r1(core_fc), r1(head_fc)
 
@@ -45,15 +47,14 @@ print(f"Headline forecast {head_fc} (published {cons_head}), spread {head_sd:.3f
 print(f"P(above): {above.mean():.2f}   P(in line): {inline.mean():.2f}   P(below): {below.mean():.2f}")
 
 if save:
-    row = pd.DataFrame([{
+    row = {
         "release": release, "indicator": "core_cpi_mom",
         "made_on": pd.Timestamp.today().date(),
         "p_above": round(above.mean(), 3), "p_inline": round(inline.mean(), 3),
         "p_below": round(below.mean(), 3), "outcome": "",
         "note": f"core fc {core_fc}, head fc {head_fc}, sd {core_sd:.3f}/{head_sd:.3f}",
-    }])
-    log = pd.read_csv("predictions.csv")
-    pd.concat([log, row]).to_csv("predictions.csv", index=False)
+    }
+    append_prediction(row)
     print("Saved to predictions.csv")
 else:
     print("(dry run, nothing saved. Add 'save' as a fourth argument to log it.)")
