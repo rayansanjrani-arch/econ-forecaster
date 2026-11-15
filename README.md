@@ -6,7 +6,7 @@ Econ Forecaster is a small research project for estimating probabilities around 
 
 The repository currently has FRED pulls for core CPI and initial claims, a daily gold futures downloader, CPI and claims probability scripts, a prediction log, a first-release outcome log, a manually verified CPI release calendar, Brier scoring, and a 104-week walk-forward claims backtest. The prediction log contains one backfilled CPI result and one live claims result; those two observations are not enough to establish predictive value. The claims backtest reports Brier 0.654, compared with 0.667 for uniform guessing and 0.642 for a full-window constant-frequency reference. The latter uses outcomes from the complete test window and is only a diagnostic, not a deployable baseline.
 
-Automated ALFRED first-release imports, weekly claims release dates, broad consensus history, and a gold event study are not implemented yet. Historical FRED data can be revised, so current-vintage backtests should not be treated as final evidence. The manual CPI calendar is sourced from BLS; update it when BLS changes its schedule.
+Automated ALFRED first-release imports, a rolling weekly claims schedule, broad consensus history, and a gold event study are not implemented yet. Historical FRED data can be revised, so current-vintage backtests should not be treated as final evidence. The manual calendar now contains official CPI, PPI, Employment Situation, and FOMC entries; update it when agencies revise their schedules.
 
 ## Setup
 
@@ -47,7 +47,7 @@ python src/predict_cpi.py 0.2 0.3 2026-12-10
 python src/predict_cpi.py 0.2 0.3 2026-12-10 save
 ```
 
-`data/processed/release_calendar.csv` holds manually verified release dates and source links. `python src/release_calendar.py` lists upcoming dates; add or revise rows only after checking the issuing agency's schedule. The current file includes scheduled CPI releases. It does not guess weekly claims dates around holidays.
+`data/processed/release_calendar.csv` holds manually verified release dates and source links for CPI, PPI, Employment Situation (payrolls, unemployment and earnings) and FOMC policy decisions. `python src/release_calendar.py` lists the next 90 days, with UTC and Pakistan time conversions plus same-day/within-60-minute overlap flags. Use `--days 180` for a longer window or `--all` for the complete file. Eastern daylight-saving changes are applied by date. The 2027 FOMC entries are tentative per the Federal Reserve's revised schedule; the October strategy meeting is not listed as a rate decision. DOL publishes the weekly claims report on a weekly basis but does not provide this calendar with a forward holiday-adjusted schedule, so add each claims date only after its official announcement rather than guessing holiday shifts.
 
 After a forecast has been logged and the agency publishes its first release, record the reported value and source. Outcomes are stored separately in append-only `data/processed/first_release_outcomes.csv`; `score.py` joins them to predictions without editing forecast records. Duplicate outcomes and outcomes without a matching forecast are rejected.
 

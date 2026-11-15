@@ -1,5 +1,11 @@
 # Experiments log
 
+## 2026-11-15: Expand verified release calendar
+- Added agency-scheduled dates for CPI, PPI and Employment Situation releases, plus FOMC policy decision dates. BLS dates were checked against its release-specific schedules; the 2027 FOMC rows use the Federal Reserve's revised November 12 tentative schedule.
+- Each event retains its source URL and UTC check timestamp. The calendar command converts Eastern release times to UTC and Pakistan local time using timezone rules, and flags same-day and within-60-minute overlaps.
+- Decision: do not prefill weekly claims dates around holidays because DOL publishes the claims report weekly but does not provide the same rolling forward calendar. Add each date when its official announcement is available; do not guess holiday shifts.
+- Tests cover Eastern Standard/Daylight Time conversion, same-day/near-time overlap flags, duplicate keys and invalid time strings.
+
 ## 2026-11-15: Release calendar and first-release outcome capture
 - Added a manual calendar of scheduled CPI dates from the BLS release schedule, with the agency URL and checked date on each row. The next listed release is November 2026 CPI on December 10, 2026 at 8:30 a.m. Eastern.
 - Added a separate append-only outcome file. Outcome records retain first-reported values, the forecast/consensus comparison values, source link, and UTC recording timestamp. Scoring joins these outcomes to matching forecasts without editing the prediction log.
