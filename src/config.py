@@ -7,6 +7,12 @@ PROJECT_ROOT = Path(__file__).resolve().parents[1]
 SRC_DIR = PROJECT_ROOT / "src"
 DATA_DIR = PROJECT_ROOT / "data"
 RAW_DATA_DIR = DATA_DIR / "raw"
+FRED_RAW_DIR = RAW_DATA_DIR / "fred"
+FRED_SNAPSHOT_DIR = FRED_RAW_DIR / "snapshots"
+FRED_MANIFEST_FILE = FRED_RAW_DIR / "manifest.csv"
+ALFRED_RAW_DIR = FRED_RAW_DIR / "alfred"
+ALFRED_SNAPSHOT_DIR = ALFRED_RAW_DIR / "snapshots"
+ALFRED_MANIFEST_FILE = ALFRED_RAW_DIR / "manifest.csv"
 PROCESSED_DATA_DIR = DATA_DIR / "processed"
 LOGS_DIR = PROJECT_ROOT / "logs"
 REPORTS_DIR = PROJECT_ROOT / "reports"
@@ -21,6 +27,72 @@ FRED_GRAPH_URL = "https://fred.stlouisfed.org/graph/fredgraph.csv"
 CLAIMS_SERIES = "ICSA"
 CORE_CPI_SERIES = "CPILFESL"
 HEADLINE_CPI_SERIES = "CPIAUCSL"
+PPI_SERIES = "PPIFIS"
+PAYROLLS_SERIES = "PAYEMS"
+UNEMPLOYMENT_SERIES = "UNRATE"
+REAL_GDP_SERIES = "GDPC1"
+RETAIL_SALES_SERIES = "RSAFS"
+
+# Metadata is checked against each FRED series page. Current-vintage pulls use
+# these units/frequencies but do not represent historical ALFRED information sets.
+FRED_SERIES_CATALOG = {
+    CORE_CPI_SERIES: {
+        "name": "Core CPI index",
+        "frequency": "monthly",
+        "units": "Index 1982-1984=100",
+        "seasonal_adjustment": "Seasonally adjusted",
+        "source_agency": "U.S. Bureau of Labor Statistics",
+    },
+    HEADLINE_CPI_SERIES: {
+        "name": "CPI index",
+        "frequency": "monthly",
+        "units": "Index 1982-1984=100",
+        "seasonal_adjustment": "Seasonally adjusted",
+        "source_agency": "U.S. Bureau of Labor Statistics",
+    },
+    PPI_SERIES: {
+        "name": "Producer Price Index by Commodity: Final Demand",
+        "frequency": "monthly",
+        "units": "Index Nov 2009=100",
+        "seasonal_adjustment": "Seasonally adjusted",
+        "source_agency": "U.S. Bureau of Labor Statistics",
+    },
+    PAYROLLS_SERIES: {
+        "name": "All Employees: Total Nonfarm",
+        "frequency": "monthly",
+        "units": "Thousands of persons",
+        "seasonal_adjustment": "Seasonally adjusted",
+        "source_agency": "U.S. Bureau of Labor Statistics",
+    },
+    UNEMPLOYMENT_SERIES: {
+        "name": "Unemployment rate",
+        "frequency": "monthly",
+        "units": "Percent",
+        "seasonal_adjustment": "Seasonally adjusted",
+        "source_agency": "U.S. Bureau of Labor Statistics",
+    },
+    CLAIMS_SERIES: {
+        "name": "Initial claims",
+        "frequency": "weekly",
+        "units": "Number",
+        "seasonal_adjustment": "Seasonally adjusted; week ending Saturday",
+        "source_agency": "U.S. Employment and Training Administration",
+    },
+    REAL_GDP_SERIES: {
+        "name": "Real gross domestic product",
+        "frequency": "quarterly",
+        "units": "Billions of chained 2017 dollars",
+        "seasonal_adjustment": "Seasonally adjusted annual rate",
+        "source_agency": "U.S. Bureau of Economic Analysis",
+    },
+    RETAIL_SALES_SERIES: {
+        "name": "Advance retail sales: retail trade and food services",
+        "frequency": "monthly",
+        "units": "Millions of dollars",
+        "seasonal_adjustment": "Seasonally adjusted",
+        "source_agency": "U.S. Census Bureau",
+    },
+}
 GOLD_YAHOO_TICKER = "GC=F"
 GOLD_SOURCE_NAME = "Yahoo Finance via yfinance"
 GOLD_START_DATE = "2019-01-01"

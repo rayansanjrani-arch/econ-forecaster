@@ -8,9 +8,22 @@ import pandas as pd
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
 from release_calendar import CALENDAR_COLUMNS, enrich_calendar, load_calendar
+from config import RELEASE_CALENDAR_FILE
 
 
 class ReleaseCalendarTests(unittest.TestCase):
+    def test_project_calendar_includes_verified_gdp_and_retail_schedule(self):
+        calendar = load_calendar(RELEASE_CALENDAR_FILE)
+        gdp = calendar[calendar["indicator"].str.startswith("real_gdp_")]
+        retail = calendar[calendar["indicator"] == "retail_sales_advance"]
+
+        self.assertEqual(len(gdp), 14)
+        self.assertEqual(len(retail), 14)
+        self.assertIn("2027-01-28", gdp["release_date"].tolist())
+        self.assertIn("2026-11-17", retail["release_date"].tolist())
+        self.assertTrue(gdp["source_url"].str.startswith("https://www.bea.gov/").all())
+        self.assertTrue(retail["source_url"].str.startswith("https://www.census.gov/").all())
+
     def test_loads_and_sorts_verified_events(self):
         with tempfile.TemporaryDirectory() as directory:
             path = Path(directory) / "calendar.csv"

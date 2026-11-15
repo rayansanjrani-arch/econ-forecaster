@@ -1,48 +1,76 @@
 release_date,indicator,event,reference_period,release_time_et,source_url,checked_at_utc
+2026-11-17,retail_sales_advance,Advance Monthly Sales for Retail and Food Services,October 2026,08:30 AM ET,https://www.census.gov/retail/release_schedule.html,2026-11-15T14:46:41+00:00
+2026-11-25,real_gdp_second,GDP (Second Estimate),3rd Quarter 2026,08:30 AM ET,https://www.bea.gov/news/schedule/,2026-11-15T14:46:41+00:00
 2026-12-04,employment_situation,Employment Situation (payrolls unemployment earnings),November 2026,08:30 AM ET,https://www.bls.gov/schedule/news_release/empsit.htm,2026-11-15T14:02:54+00:00
 2026-12-09,fomc_decision,FOMC policy decision,Meeting of December 8-9 2026,02:00 PM ET,https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm,2026-11-15T14:02:54+00:00
 2026-12-10,core_cpi_mom,Consumer Price Index,November 2026,08:30 AM ET,https://www.bls.gov/schedule/news_release/cpi.htm,2026-11-15T14:02:54+00:00
 2026-12-15,ppi,Producer Price Index,November 2026,08:30 AM ET,https://www.bls.gov/schedule/news_release/ppi.htm,2026-11-15T14:02:54+00:00
+2026-12-16,retail_sales_advance,Advance Monthly Sales for Retail and Food Services,November 2026,08:30 AM ET,https://www.census.gov/retail/release_schedule.html,2026-11-15T14:46:41+00:00
+2026-12-23,real_gdp_third,GDP (Third Estimate),3rd Quarter 2026,08:30 AM ET,https://www.bea.gov/news/schedule/,2026-11-15T14:46:41+00:00
 2027-01-08,employment_situation,Employment Situation (payrolls unemployment earnings),December 2026,08:30 AM ET,https://www.bls.gov/schedule/news_release/empsit.htm,2026-11-15T14:02:54+00:00
 2027-01-13,core_cpi_mom,Consumer Price Index,December 2026,08:30 AM ET,https://www.bls.gov/schedule/news_release/cpi.htm,2026-11-15T14:02:54+00:00
 2027-01-14,ppi,Producer Price Index,December 2026,08:30 AM ET,https://www.bls.gov/schedule/news_release/ppi.htm,2026-11-15T14:02:54+00:00
+2027-01-15,retail_sales_advance,Advance Monthly Sales for Retail and Food Services,December 2026,08:30 AM ET,https://www.census.gov/retail/release_schedule.html,2026-11-15T14:46:41+00:00
 2027-01-27,fomc_decision,FOMC policy decision (tentative),Meeting of January 26-27 2027,02:00 PM ET,https://www.federalreserve.gov/newsevents/pressreleases/monetary20261112a.htm,2026-11-15T14:02:54+00:00
+2027-01-28,real_gdp_advance,GDP (Advance Estimate),4th Quarter and Year 2026,08:30 AM ET,https://www.bea.gov/news/schedule/next-year,2026-11-15T14:46:41+00:00
 2027-02-05,employment_situation,Employment Situation (payrolls unemployment earnings),January 2027,08:30 AM ET,https://www.bls.gov/schedule/news_release/empsit.htm,2026-11-15T14:02:54+00:00
 2027-02-11,core_cpi_mom,Consumer Price Index,January 2027,08:30 AM ET,https://www.bls.gov/schedule/news_release/cpi.htm,2026-11-15T14:02:54+00:00
 2027-02-12,ppi,Producer Price Index,January 2027,08:30 AM ET,https://www.bls.gov/schedule/news_release/ppi.htm,2026-11-15T14:02:54+00:00
+2027-02-17,retail_sales_advance,Advance Monthly Sales for Retail and Food Services,January 2027,08:30 AM ET,https://www.census.gov/retail/release_schedule.html,2026-11-15T14:46:41+00:00
+2027-02-25,real_gdp_second,GDP (Second Estimate),4th Quarter and Year 2026,08:30 AM ET,https://www.bea.gov/news/schedule/next-year,2026-11-15T14:46:41+00:00
 2027-03-05,employment_situation,Employment Situation (payrolls unemployment earnings),February 2027,08:30 AM ET,https://www.bls.gov/schedule/news_release/empsit.htm,2026-11-15T14:02:54+00:00
 2027-03-10,core_cpi_mom,Consumer Price Index,February 2027,08:30 AM ET,https://www.bls.gov/schedule/news_release/cpi.htm,2026-11-15T14:02:54+00:00
 2027-03-12,ppi,Producer Price Index,February 2027,08:30 AM ET,https://www.bls.gov/schedule/news_release/ppi.htm,2026-11-15T14:02:54+00:00
+2027-03-16,retail_sales_advance,Advance Monthly Sales for Retail and Food Services,February 2027,08:30 AM ET,https://www.census.gov/retail/release_schedule.html,2026-11-15T14:46:41+00:00
 2027-03-17,fomc_decision,FOMC policy decision (tentative),Meeting of March 16-17 2027,02:00 PM ET,https://www.federalreserve.gov/newsevents/pressreleases/monetary20261112a.htm,2026-11-15T14:02:54+00:00
+2027-03-31,real_gdp_third,GDP (Third Estimate),4th Quarter and Year 2026,08:30 AM ET,https://www.bea.gov/news/schedule/next-year,2026-11-15T14:46:41+00:00
 2027-04-02,employment_situation,Employment Situation (payrolls unemployment earnings),March 2027,08:30 AM ET,https://www.bls.gov/schedule/news_release/empsit.htm,2026-11-15T14:02:54+00:00
 2027-04-13,core_cpi_mom,Consumer Price Index,March 2027,08:30 AM ET,https://www.bls.gov/schedule/news_release/cpi.htm,2026-11-15T14:02:54+00:00
 2027-04-14,ppi,Producer Price Index,March 2027,08:30 AM ET,https://www.bls.gov/schedule/news_release/ppi.htm,2026-11-15T14:02:54+00:00
+2027-04-16,retail_sales_advance,Advance Monthly Sales for Retail and Food Services,March 2027,08:30 AM ET,https://www.census.gov/retail/release_schedule.html,2026-11-15T14:46:41+00:00
 2027-04-28,fomc_decision,FOMC policy decision (tentative),Meeting of April 27-28 2027,02:00 PM ET,https://www.federalreserve.gov/newsevents/pressreleases/monetary20261112a.htm,2026-11-15T14:02:54+00:00
+2027-04-29,real_gdp_advance,GDP (Advance Estimate),1st Quarter 2027,08:30 AM ET,https://www.bea.gov/news/schedule/next-year,2026-11-15T14:46:41+00:00
 2027-05-07,employment_situation,Employment Situation (payrolls unemployment earnings),April 2027,08:30 AM ET,https://www.bls.gov/schedule/news_release/empsit.htm,2026-11-15T14:02:54+00:00
 2027-05-12,core_cpi_mom,Consumer Price Index,April 2027,08:30 AM ET,https://www.bls.gov/schedule/news_release/cpi.htm,2026-11-15T14:02:54+00:00
 2027-05-13,ppi,Producer Price Index,April 2027,08:30 AM ET,https://www.bls.gov/schedule/news_release/ppi.htm,2026-11-15T14:02:54+00:00
+2027-05-14,retail_sales_advance,Advance Monthly Sales for Retail and Food Services,April 2027,08:30 AM ET,https://www.census.gov/retail/release_schedule.html,2026-11-15T14:46:41+00:00
+2027-05-27,real_gdp_second,GDP (Second Estimate),1st Quarter 2027,08:30 AM ET,https://www.bea.gov/news/schedule/next-year,2026-11-15T14:46:41+00:00
 2027-06-04,employment_situation,Employment Situation (payrolls unemployment earnings),May 2027,08:30 AM ET,https://www.bls.gov/schedule/news_release/empsit.htm,2026-11-15T14:02:54+00:00
 2027-06-09,fomc_decision,FOMC policy decision (tentative),Meeting of June 8-9 2027,02:00 PM ET,https://www.federalreserve.gov/newsevents/pressreleases/monetary20261112a.htm,2026-11-15T14:02:54+00:00
 2027-06-10,core_cpi_mom,Consumer Price Index,May 2027,08:30 AM ET,https://www.bls.gov/schedule/news_release/cpi.htm,2026-11-15T14:02:54+00:00
 2027-06-11,ppi,Producer Price Index,May 2027,08:30 AM ET,https://www.bls.gov/schedule/news_release/ppi.htm,2026-11-15T14:02:54+00:00
+2027-06-16,retail_sales_advance,Advance Monthly Sales for Retail and Food Services,May 2027,08:30 AM ET,https://www.census.gov/retail/release_schedule.html,2026-11-15T14:46:41+00:00
+2027-06-25,real_gdp_third,GDP (Third Estimate),1st Quarter 2027,08:30 AM ET,https://www.bea.gov/news/schedule/next-year,2026-11-15T14:46:41+00:00
 2027-07-02,employment_situation,Employment Situation (payrolls unemployment earnings),June 2027,08:30 AM ET,https://www.bls.gov/schedule/news_release/empsit.htm,2026-11-15T14:02:54+00:00
 2027-07-14,core_cpi_mom,Consumer Price Index,June 2027,08:30 AM ET,https://www.bls.gov/schedule/news_release/cpi.htm,2026-11-15T14:02:54+00:00
 2027-07-15,ppi,Producer Price Index,June 2027,08:30 AM ET,https://www.bls.gov/schedule/news_release/ppi.htm,2026-11-15T14:02:54+00:00
+2027-07-16,retail_sales_advance,Advance Monthly Sales for Retail and Food Services,June 2027,08:30 AM ET,https://www.census.gov/retail/release_schedule.html,2026-11-15T14:46:41+00:00
 2027-07-28,fomc_decision,FOMC policy decision (tentative),Meeting of July 27-28 2027,02:00 PM ET,https://www.federalreserve.gov/newsevents/pressreleases/monetary20261112a.htm,2026-11-15T14:02:54+00:00
+2027-07-29,real_gdp_advance,GDP (Advance Estimate),2nd Quarter 2027,08:30 AM ET,https://www.bea.gov/news/schedule/next-year,2026-11-15T14:46:41+00:00
 2027-08-06,employment_situation,Employment Situation (payrolls unemployment earnings),July 2027,08:30 AM ET,https://www.bls.gov/schedule/news_release/empsit.htm,2026-11-15T14:02:54+00:00
-2027-08-11,core_cpi_mom,Consumer Price Index,July 2027,08:30 AM ET,https://www.bls.gov/schedule/news_release/cpi.htm,2026-11-15T14:02:54+00:00
 2027-08-10,ppi,Producer Price Index,July 2027,08:30 AM ET,https://www.bls.gov/schedule/news_release/ppi.htm,2026-11-15T14:02:54+00:00
+2027-08-11,core_cpi_mom,Consumer Price Index,July 2027,08:30 AM ET,https://www.bls.gov/schedule/news_release/cpi.htm,2026-11-15T14:02:54+00:00
+2027-08-16,retail_sales_advance,Advance Monthly Sales for Retail and Food Services,July 2027,08:30 AM ET,https://www.census.gov/retail/release_schedule.html,2026-11-15T14:46:41+00:00
+2027-08-25,real_gdp_second,GDP (Second Estimate),2nd Quarter 2027,08:30 AM ET,https://www.bea.gov/news/schedule/next-year,2026-11-15T14:46:41+00:00
 2027-09-03,employment_situation,Employment Situation (payrolls unemployment earnings),August 2027,08:30 AM ET,https://www.bls.gov/schedule/news_release/empsit.htm,2026-11-15T14:02:54+00:00
 2027-09-10,ppi,Producer Price Index,August 2027,08:30 AM ET,https://www.bls.gov/schedule/news_release/ppi.htm,2026-11-15T14:02:54+00:00
 2027-09-14,core_cpi_mom,Consumer Price Index,August 2027,08:30 AM ET,https://www.bls.gov/schedule/news_release/cpi.htm,2026-11-15T14:02:54+00:00
 2027-09-15,fomc_decision,FOMC policy decision (tentative),Meeting of September 14-15 2027,02:00 PM ET,https://www.federalreserve.gov/newsevents/pressreleases/monetary20261112a.htm,2026-11-15T14:02:54+00:00
+2027-09-16,retail_sales_advance,Advance Monthly Sales for Retail and Food Services,August 2027,08:30 AM ET,https://www.census.gov/retail/release_schedule.html,2026-11-15T14:46:41+00:00
+2027-09-30,real_gdp_third,GDP (Third Estimate),2nd Quarter 2027,08:30 AM ET,https://www.bea.gov/news/schedule/next-year,2026-11-15T14:46:41+00:00
 2027-10-08,employment_situation,Employment Situation (payrolls unemployment earnings),September 2027,08:30 AM ET,https://www.bls.gov/schedule/news_release/empsit.htm,2026-11-15T14:02:54+00:00
 2027-10-14,core_cpi_mom,Consumer Price Index,September 2027,08:30 AM ET,https://www.bls.gov/schedule/news_release/cpi.htm,2026-11-15T14:02:54+00:00
 2027-10-15,ppi,Producer Price Index,September 2027,08:30 AM ET,https://www.bls.gov/schedule/news_release/ppi.htm,2026-11-15T14:02:54+00:00
+2027-10-15,retail_sales_advance,Advance Monthly Sales for Retail and Food Services,September 2027,08:30 AM ET,https://www.census.gov/retail/release_schedule.html,2026-11-15T14:46:41+00:00
+2027-10-28,real_gdp_advance,GDP (Advance Estimate),3rd Quarter 2027,08:30 AM ET,https://www.bea.gov/news/schedule/next-year,2026-11-15T14:46:41+00:00
 2027-11-05,employment_situation,Employment Situation (payrolls unemployment earnings),October 2027,08:30 AM ET,https://www.bls.gov/schedule/news_release/empsit.htm,2026-11-15T14:02:54+00:00
 2027-11-10,core_cpi_mom,Consumer Price Index,October 2027,08:30 AM ET,https://www.bls.gov/schedule/news_release/cpi.htm,2026-11-15T14:02:54+00:00
 2027-11-12,ppi,Producer Price Index,October 2027,08:30 AM ET,https://www.bls.gov/schedule/news_release/ppi.htm,2026-11-15T14:02:54+00:00
+2027-11-16,retail_sales_advance,Advance Monthly Sales for Retail and Food Services,October 2027,08:30 AM ET,https://www.census.gov/retail/release_schedule.html,2026-11-15T14:46:41+00:00
 2027-11-17,fomc_decision,FOMC policy decision (tentative),Meeting of November 16-17 2027,02:00 PM ET,https://www.federalreserve.gov/newsevents/pressreleases/monetary20261112a.htm,2026-11-15T14:02:54+00:00
+2027-11-24,real_gdp_second,GDP (Second Estimate),3rd Quarter 2027,08:30 AM ET,https://www.bea.gov/news/schedule/next-year,2026-11-15T14:46:41+00:00
 2027-12-03,employment_situation,Employment Situation (payrolls unemployment earnings),November 2027,08:30 AM ET,https://www.bls.gov/schedule/news_release/empsit.htm,2026-11-15T14:02:54+00:00
 2027-12-10,core_cpi_mom,Consumer Price Index,November 2027,08:30 AM ET,https://www.bls.gov/schedule/news_release/cpi.htm,2026-11-15T14:02:54+00:00
 2027-12-15,ppi,Producer Price Index,November 2027,08:30 AM ET,https://www.bls.gov/schedule/news_release/ppi.htm,2026-11-15T14:02:54+00:00
+2027-12-15,retail_sales_advance,Advance Monthly Sales for Retail and Food Services,November 2027,08:30 AM ET,https://www.census.gov/retail/release_schedule.html,2026-11-15T14:46:41+00:00
+2027-12-22,real_gdp_third,GDP (Third Estimate),3rd Quarter 2027,08:30 AM ET,https://www.bea.gov/news/schedule/next-year,2026-11-15T14:46:41+00:00

@@ -4,9 +4,9 @@ Econ Forecaster is a small research project for estimating probabilities around 
 
 ## Current status
 
-The repository currently has FRED pulls for core CPI and initial claims, a daily gold futures downloader, CPI and claims probability scripts, a prediction log, a first-release outcome log, a manually verified CPI release calendar, Brier scoring, and a 104-week walk-forward claims backtest. The prediction log contains one backfilled CPI result and one live claims result; those two observations are not enough to establish predictive value. The claims backtest reports Brier 0.654, compared with 0.667 for uniform guessing and 0.642 for a full-window constant-frequency reference. The latter uses outcomes from the complete test window and is only a diagnostic, not a deployable baseline.
+The repository currently has FRED prediction pulls for core CPI and initial claims, a batch FRED data refresh for eight economic series, a daily gold futures downloader, CPI and claims probability scripts, a prediction log, a first-release outcome log, a manually verified release calendar, Brier scoring, and a 104-week walk-forward claims backtest. The prediction log contains one backfilled CPI result and one live claims result; those two observations are not enough to establish predictive value. The claims backtest reports Brier 0.654, compared with 0.667 for uniform guessing and 0.642 for a full-window constant-frequency reference. The latter uses outcomes from the complete test window and is only a diagnostic, not a deployable baseline.
 
-Automated ALFRED first-release imports, a rolling weekly claims schedule, broad consensus history, and a gold event study are not implemented yet. Historical FRED data can be revised, so current-vintage backtests should not be treated as final evidence. The manual calendar now contains official CPI, PPI, Employment Situation, and FOMC entries; update it when agencies revise their schedules.
+ALFRED point-in-time snapshot retrieval is implemented, but it is not yet connected to forecast generation or backtests. A rolling weekly claims schedule, broad consensus history, and a gold event study are also future work. Historical FRED data can be revised, so current-vintage backtests should not be treated as final evidence. The manual calendar contains official CPI, PPI, Employment Situation, FOMC, GDP, and advance retail sales entries; update it when agencies revise their schedules.
 
 ## Setup
 
@@ -22,6 +22,7 @@ Run commands from the repository directory:
 
 ```powershell
 python src/fetch_cpi.py
+python src/fetch_economic_data.py
 python src/fetch_gold.py
 python src/validate_gold.py
 python src/release_calendar.py
@@ -32,6 +33,19 @@ python src/backtest_claims.py
 python src/backtest_v2.py
 python src/score.py
 ```
+
+`python src/fetch_economic_data.py` refreshes the configured FRED series as one validated batch: core CPI, headline CPI, final-demand PPI, nonfarm payrolls, unemployment, initial claims, real GDP, and advance retail sales. It validates dates, duplicates, numeric values, and the expected monthly, Saturday-weekly, or quarterly spacing before writing any files. Each successful refresh creates an immutable snapshot under `data/raw/fred/snapshots/` and appends source, units, frequency, retrieval time, row counts, missing-value counts and dates, and date coverage to `data/raw/fred/manifest.csv`. Use `--series ICSA --series PAYEMS` to fetch selected series. FRED's `.` missing-value markers are retained in the snapshots and listed in the manifest. These are current-vintage FRED observations and can change when agencies revise history; they are not ALFRED first-release vintages. Raw files are ignored by Git.
+
+ALFRED point-in-time snapshots are fetched separately with `src/fetch_alfred_vintage.py`. The official FRED API requires a personal API key. Request one from [your FRED account](https://fredaccount.stlouisfed.org/), then enter it into the current PowerShell session without putting it in project files or command history:
+
+```powershell
+$secureKey = Read-Host "FRED API key" -AsSecureString
+$env:FRED_API_KEY = [Net.NetworkCredential]::new("", $secureKey).Password
+Remove-Variable secureKey
+python src/fetch_alfred_vintage.py --vintage-date 2026-11-14
+```
+
+The command fetches all configured series for one requested ALFRED as-of date; repeat `--series` to fetch selected series. It validates the complete batch before writing an immutable snapshot under `data/raw/fred/alfred/snapshots/` and adds source, retrieval date, observation coverage, and missing-value details to `data/raw/fred/alfred/manifest.csv`. Each request uses the FRED API's `vintage_dates` parameter. The Version 1 API requires `api_key` in its HTTPS query; the program reads it from the environment and does not print or save it. The date is day-granular, not an intraday release timestamp: for a forecast made before a release on a given day, use the prior calendar date as the information cutoff. These snapshots are point-in-time input data, not a full backtest; forecast generation and scoring against first-reported outcomes remain separate work.
 
 `src/predict_claims.py` downloads current FRED claims observations, estimates odds around a 4-week average (or a consensus value passed as its first argument), and appends a live prediction to `logs/predictions.csv`. Check the printed release date against the official calendar, especially around holidays, before relying on it.
 
@@ -47,7 +61,7 @@ python src/predict_cpi.py 0.2 0.3 2026-12-10
 python src/predict_cpi.py 0.2 0.3 2026-12-10 save
 ```
 
-`data/processed/release_calendar.csv` holds manually verified release dates and source links for CPI, PPI, Employment Situation (payrolls, unemployment and earnings) and FOMC policy decisions. `python src/release_calendar.py` lists the next 90 days, with UTC and Pakistan time conversions plus same-day/within-60-minute overlap flags. Use `--days 180` for a longer window or `--all` for the complete file. Eastern daylight-saving changes are applied by date. The 2027 FOMC entries are tentative per the Federal Reserve's revised schedule; the October strategy meeting is not listed as a rate decision. DOL publishes the weekly claims report on a weekly basis but does not provide this calendar with a forward holiday-adjusted schedule, so add each claims date only after its official announcement rather than guessing holiday shifts.
+`data/processed/release_calendar.csv` holds manually verified release dates and source links for CPI, PPI, Employment Situation (payrolls, unemployment and earnings), FOMC decisions, BEA GDP estimates, and Census advance retail sales. `python src/release_calendar.py` lists the next 90 days, with UTC and Pakistan time conversions plus same-day/within-60-minute overlap flags. Use `--days 180` for a longer window or `--all` for the complete file. Eastern daylight-saving changes are applied by date. The 2027 FOMC entries are tentative per the Federal Reserve's revised schedule; the October strategy meeting is not listed as a rate decision. DOL publishes the weekly claims report weekly but does not provide a forward holiday-adjusted calendar, so add each claims date only after its official announcement rather than guessing holiday shifts.
 
 After a forecast has been logged and the agency publishes its first release, record the reported value and source. Outcomes are stored separately in append-only `data/processed/first_release_outcomes.csv`; `score.py` joins them to predictions without editing forecast records. Duplicate outcomes and outcomes without a matching forecast are rejected.
 

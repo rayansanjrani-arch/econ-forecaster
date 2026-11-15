@@ -1,15 +1,30 @@
 # Experiments log
 
+## 2026-11-15: Standardized current-vintage FRED snapshots
+- Added a shared fetch/validation command for core and headline CPI, final-demand PPI, total nonfarm payrolls, unemployment rate, initial claims, real GDP, and advance retail sales.
+- Checked series definitions and units against official FRED metadata: CPILFESL/CPIAUCSL, PPIFIS, PAYEMS, UNRATE, ICSA, GDPC1 and RSAFS. Frequencies are monthly except weekly Saturday-ending claims and quarterly real GDP.
+- Each successful batch writes immutable per-series CSVs in a timestamped raw snapshot directory and appends a manifest with source, units, frequency, retrieval time, row counts, missing values and observation coverage.
+- Validated live batch (snapshot `20261115T144013Z`) fetched all eight series. Three series have a blank FRED value at `2025-10-01` (core CPI, headline CPI and unemployment); the snapshot retains the blank rows and the manifest identifies them. No rows are silently filled or interpolated.
+- Decision: preserve current-vintage downloads for reproducibility but do not use them as first-release labels; ALFRED vintage support remains a separate task. Any failed series or quality check aborts the whole batch before writing a partial snapshot.
+- Tests cover frequency spacing, duplicate/invalid dates, invalid numeric values, snapshot/manifest output and atomic rejection of a failed batch.
+
 ## 2026-11-15: Expand verified release calendar
 - Added agency-scheduled dates for CPI, PPI and Employment Situation releases, plus FOMC policy decision dates. BLS dates were checked against its release-specific schedules; the 2027 FOMC rows use the Federal Reserve's revised November 12 tentative schedule.
 - Each event retains its source URL and UTC check timestamp. The calendar command converts Eastern release times to UTC and Pakistan local time using timezone rules, and flags same-day and within-60-minute overlaps.
 - Decision: do not prefill weekly claims dates around holidays because DOL publishes the claims report weekly but does not provide the same rolling forward calendar. Add each date when its official announcement is available; do not guess holiday shifts.
 - Tests cover Eastern Standard/Daylight Time conversion, same-day/near-time overlap flags, duplicate keys and invalid time strings.
 
+## 2026-11-15: Add scheduled GDP and retail releases
+- Added BEA GDP advance, second, and third estimate dates from November 2026 through December 2027, with each estimate type and reference quarter stored separately.
+- Added Census advance monthly retail and food services release dates from November 2026 through December 2027. The Census schedule has not yet announced the December 2027 data release date, so it is not included.
+- Sources: [BEA 2026 schedule](https://www.bea.gov/news/schedule/), [BEA 2027 schedule](https://www.bea.gov/news/schedule/next-year), and [Census 2026/2027 retail schedule](https://www.census.gov/retail/release_schedule.html), checked 2026-11-15.
+- Claims dates remain excluded until the Department of Labor confirms each date; no holiday-adjusted weekly dates are inferred.
+- Tests verify the calendar includes all 14 listed GDP and 14 retail events and that their agency source URLs are present.
+
 ## 2026-11-15: Release calendar and first-release outcome capture
 - Added a manual calendar of scheduled CPI dates from the BLS release schedule, with the agency URL and checked date on each row. The next listed release is November 2026 CPI on December 10, 2026 at 8:30 a.m. Eastern.
 - Added a separate append-only outcome file. Outcome records retain first-reported values, the forecast/consensus comparison values, source link, and UTC recording timestamp. Scoring joins these outcomes to matching forecasts without editing the prediction log.
-- Decision: maintain the calendar manually and verify dates against official agency schedules; do not infer weekly claims dates during holiday weeks. Automated ALFRED imports and correction/version handling remain future work.
+- Decision: maintain the calendar manually and verify dates against official agency schedules; do not infer weekly claims dates during holiday weeks. ALFRED point-in-time snapshot retrieval is tracked separately from forecast/backtest integration.
 - Validation: outcome capture requires a matching saved forecast and source URL, rejects duplicate results, and keeps existing prediction rows unchanged.
 
 ## 2026-11-15: Daily gold source check
@@ -45,3 +60,10 @@
   added noise, so v1 stays the live model.
 - Caveat: one 2-year window, so differences of ~0.01 are within noise.
 - Next: judge v1 on live predictions it hasn't seen.
+
+
+## 2026-11-15: Add ALFRED point-in-time snapshot fetcher
+- Added an authenticated FRED API client for one exact vintage/as-of date using the official `vintage_dates` parameter and observations-by-real-time-period output. The API key is read from `FRED_API_KEY` and supplied over HTTPS in the Version 1 API's required `api_key` query parameter; it is not printed or written to the repository.
+- Added all-series/selected-series CLI retrieval, full-batch validation before writes, immutable timestamped vintage snapshots, and a separate manifest containing the vintage date and data coverage.
+- Kept ALFRED snapshots separate from current-vintage FRED snapshots; the existing current-vintage fetcher is unchanged. Date-granular ALFRED snapshots do not encode the intraday order of a forecast and release on the same day.
+- Offline tests cover request construction, key handling, date validation, missing observations, API errors, atomic batch rejection, and manifest output. A live API fetch still requires the user's FRED API key.
