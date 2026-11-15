@@ -3,38 +3,41 @@ import numpy as np
 import pandas as pd
 from prediction_log import append_prediction
 from forecast_utils import round_half_up
+from config import (CORE_CPI_SERIES, CPI_FORECAST_WINDOW, CPI_GAP_LIMIT_DAYS,
+                    CPI_MONTE_CARLO_SAMPLES, CPI_RANDOM_SEED, CPI_SPREAD_WINDOW,
+                    HEADLINE_CPI_SERIES, PREDICTIONS_FILE, fred_csv_url)
 
 if len(sys.argv) < 4:
-    sys.exit("Usage: python predict_cpi.py CORE_FC HEADLINE_FC RELEASE_DATE [save]")
+    sys.exit("Usage: python src/predict_cpi.py CORE_FC HEADLINE_FC RELEASE_DATE [save]")
 core_fc = float(sys.argv[1])
 head_fc = float(sys.argv[2])
 release = sys.argv[3]
 save = len(sys.argv) > 4 and sys.argv[4] == "save"
 
 def load(series):
-    url = f"https://fred.stlouisfed.org/graph/fredgraph.csv?id={series}"
+    url = fred_csv_url(series)
     df = pd.read_csv(url, index_col=0, parse_dates=True, na_values=["."]).dropna()
     df.columns = ["idx"]
     df["mom"] = df["idx"].pct_change() * 100
-    gap = df.index.to_series().diff().dt.days > 40   # skip changes spanning the shutdown gap
+    gap = df.index.to_series().diff().dt.days > CPI_GAP_LIMIT_DAYS
     df.loc[gap, "mom"] = None
-    df["error"] = df["mom"] - df["mom"].rolling(3).mean().shift(1)
+    df["error"] = df["mom"] - df["mom"].rolling(CPI_FORECAST_WINDOW).mean().shift(1)
     return df
 
-def robust_sd(df, n=36):
+def robust_sd(df, n=CPI_SPREAD_WINDOW):
     e = df["error"].dropna().iloc[-n:]
     return 1.4826 * (e - e.median()).abs().median()
 
-core_sd = robust_sd(load("CPILFESL"))
-head_sd = robust_sd(load("CPIAUCSL"))
+core_sd = robust_sd(load(CORE_CPI_SERIES))
+head_sd = robust_sd(load(HEADLINE_CPI_SERIES))
 
 def r1(x):                      # round half up to one decimal, like published figures
     return round_half_up(x, 1)
 
 cons_core, cons_head = r1(core_fc), r1(head_fc)
 
-rng = np.random.default_rng(42)
-N = 200000
+rng = np.random.default_rng(CPI_RANDOM_SEED)
+N = CPI_MONTE_CARLO_SAMPLES
 core = np.floor(rng.normal(core_fc, core_sd, N) * 10 + 0.5) / 10
 head = np.floor(rng.normal(head_fc, head_sd, N) * 10 + 0.5) / 10
 
@@ -55,6 +58,6 @@ if save:
         "note": f"core fc {core_fc}, head fc {head_fc}, sd {core_sd:.3f}/{head_sd:.3f}",
     }
     append_prediction(row)
-    print("Saved to predictions.csv")
+    print(f"Saved to {PREDICTIONS_FILE}")
 else:
     print("(dry run, nothing saved. Add 'save' as a fourth argument to log it.)")

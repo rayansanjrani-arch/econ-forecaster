@@ -2,18 +2,19 @@ import sys
 import math
 import pandas as pd
 from prediction_log import append_prediction
+from config import (CLAIMS_BAND, CLAIMS_FORECAST_WINDOW, CLAIMS_SERIES,
+                    CLAIMS_SPREAD_WINDOW, PREDICTIONS_FILE, fred_csv_url)
 
-URL = "https://fred.stlouisfed.org/graph/fredgraph.csv?id=ICSA"
-BAND = 3000  # within +/-3,000 of the forecast counts as "in line"
+URL = fred_csv_url(CLAIMS_SERIES)
 
 df = pd.read_csv(URL, index_col=0, parse_dates=True, na_values=["."]).dropna()
 df.columns = ["claims"]
 
-df["forecast"] = df["claims"].rolling(4).mean().shift(1)
+df["forecast"] = df["claims"].rolling(CLAIMS_FORECAST_WINDOW).mean().shift(1)
 df["error"] = df["claims"] - df["forecast"]
 
 # robust spread: median absolute deviation, ignores outlier weeks
-errs = df["error"].dropna().iloc[-52:]
+errs = df["error"].dropna().iloc[-CLAIMS_SPREAD_WINDOW:]
 sd = 1.4826 * (errs - errs.median()).abs().median()
 
 # forecast: use a real consensus if you pass one, else the 4-week average
@@ -21,14 +22,14 @@ if len(sys.argv) > 1:
     forecast = float(sys.argv[1])
     source = "consensus"
 else:
-    forecast = df["claims"].iloc[-4:].mean()
+    forecast = df["claims"].iloc[-CLAIMS_FORECAST_WINDOW:].mean()
     source = "4-week average"
 
 def phi(x):
     return 0.5 * (1 + math.erf(x / math.sqrt(2)))
 
-p_above = 1 - phi(BAND / sd)
-p_below = phi(-BAND / sd)
+p_above = 1 - phi(CLAIMS_BAND / sd)
+p_below = phi(-CLAIMS_BAND / sd)
 p_inline = 1 - p_above - p_below
 
 last_obs = df.index[-1]
@@ -46,7 +47,7 @@ row = {
     "p_inline": round(p_inline, 3),
     "p_below": round(p_below, 3),
     "outcome": "",
-    "note": f"forecast {forecast:,.0f} ({source}), band +/-{BAND}",
+    "note": f"forecast {forecast:,.0f} ({source}), band +/-{CLAIMS_BAND}",
 }
 append_prediction(row)
-print("Saved to predictions.csv")
+print(f"Saved to {PREDICTIONS_FILE}")

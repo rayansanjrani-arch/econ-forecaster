@@ -21,32 +21,33 @@ python -m pip install -r requirements.txt
 Run commands from the repository directory:
 
 ```powershell
-python fetch_cpi.py
-python error_stats.py
-python claims_stats.py
-python backtest_claims.py
-python backtest_v2.py
-python score.py
+python src/fetch_cpi.py
+python src/error_stats.py
+python src/cpi_errors.py
+python src/claims_stats.py
+python src/backtest_claims.py
+python src/backtest_v2.py
+python src/score.py
 ```
 
-`predict_claims.py` downloads current FRED claims observations, estimates odds around a 4-week average (or a consensus value passed as its first argument), and appends a live prediction. Check the printed release date against the official calendar, especially around holidays, before relying on it.
+`src/predict_claims.py` downloads current FRED claims observations, estimates odds around a 4-week average (or a consensus value passed as its first argument), and appends a live prediction to `logs/predictions.csv`. Check the printed release date against the official calendar, especially around holidays, before relying on it.
 
 ```powershell
-python predict_claims.py
-python predict_claims.py 194750
+python src/predict_claims.py
+python src/predict_claims.py 194750
 ```
 
-`predict_cpi.py` takes core consensus, headline consensus, and the release date. It prints a dry run by default; add `save` to append the live prediction.
+`src/predict_cpi.py` takes core consensus, headline consensus, and the release date. It prints a dry run by default; add `save` to append the live prediction.
 
 ```powershell
-python predict_cpi.py 0.2 0.3 2026-12-10
-python predict_cpi.py 0.2 0.3 2026-12-10 save
+python src/predict_cpi.py 0.2 0.3 2026-12-10
+python src/predict_cpi.py 0.2 0.3 2026-12-10 save
 ```
 
 Score completed rows and inspect calibration:
 
 ```powershell
-python score.py
+python src/score.py
 ```
 
 Run the unit tests:
@@ -66,3 +67,16 @@ python -m unittest discover -s tests
 ## Project roadmap
 
 The staged project plan is maintained in the accompanying “Econ Forecaster Layers, Tasks and Subtasks” document. Near-term work is to improve data provenance and outcome recording, expand first-release and consensus datasets, and keep documenting experiments including negative results. Do not add a model to the main system unless it improves on a baseline in time-ordered evaluation across multiple windows.
+
+## Repository layout
+
+```text
+src/                  Research scripts and shared helpers
+data/raw/             Downloaded source files; ignored by Git
+data/processed/       Curated datasets such as cpi_history.csv
+logs/                 Prediction records
+reports/              Generated summaries and figures
+tests/                Unit tests
+```
+
+`src/config.py` holds project paths, FRED series identifiers, forecast windows, probability thresholds, and simulation settings. Data and log paths are resolved from the repository location, so the scripts work when launched from its root.

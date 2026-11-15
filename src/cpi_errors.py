@@ -1,6 +1,7 @@
 import pandas as pd
+from config import CPI_HISTORY_FILE
 
-df = pd.read_csv("cpi_history.csv")
+df = pd.read_csv(CPI_HISTORY_FILE)
 print("Months of data:", len(df))
 if len(df) < 12:
     print("Warning: under 12 months, treat these numbers as very rough.")

@@ -5,9 +5,10 @@ import math
 import os
 
 import pandas as pd
+from config import PREDICTIONS_FILE
 
 
-LOG_PATH = Path(__file__).with_name("predictions.csv")
+LOG_PATH = PREDICTIONS_FILE
 SAMPLE_TYPES = ("live", "backfilled")
 LOG_COLUMNS = [
     "release", "indicator", "made_on", "p_above", "p_inline", "p_below",

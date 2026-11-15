@@ -1,14 +1,16 @@
 import math
 import pandas as pd
 from forecast_utils import classify_band_outcome
+from config import (CLAIMS_BACKTEST_WEEKS, CLAIMS_BAND, CLAIMS_FORECAST_WINDOW,
+                    CLAIMS_RECENT_WINDOW, CLAIMS_SERIES, CLAIMS_SPREAD_WINDOW,
+                    fred_csv_url)
 
-URL = "https://fred.stlouisfed.org/graph/fredgraph.csv?id=ICSA"
-BAND = 3000
-WEEKS = 104
+URL = fred_csv_url(CLAIMS_SERIES)
+WEEKS = CLAIMS_BACKTEST_WEEKS
 
 df = pd.read_csv(URL, index_col=0, parse_dates=True, na_values=["."]).dropna()
 df.columns = ["claims"]
-df["forecast"] = df["claims"].rolling(4).mean().shift(1)
+df["forecast"] = df["claims"].rolling(CLAIMS_FORECAST_WINDOW).mean().shift(1)
 df["error"] = df["claims"] - df["forecast"]
 
 def phi(x):
@@ -16,16 +18,16 @@ def phi(x):
 
 rows = []
 for i in range(len(df) - WEEKS, len(df)):
-    past = df["error"].iloc[i - 52:i].dropna()      # only errors known before week i
+    past = df["error"].iloc[i - CLAIMS_SPREAD_WINDOW:i].dropna()  # only prior errors
     sd = 1.4826 * (past - past.median()).abs().median()
     f = df["forecast"].iloc[i]
     actual = df["claims"].iloc[i]
 
-    p_above = 1 - phi(BAND / sd)
-    p_below = phi(-BAND / sd)
+    p_above = 1 - phi(CLAIMS_BAND / sd)
+    p_below = phi(-CLAIMS_BAND / sd)
     p_in = 1 - p_above - p_below
 
-    out = classify_band_outcome(actual, f, BAND)
+    out = classify_band_outcome(actual, f, CLAIMS_BAND)
 
     hit = {"above": 0, "inline": 0, "below": 0}
     hit[out] = 1
@@ -39,7 +41,7 @@ res = pd.DataFrame(rows)
 
 print("Weeks tested:", len(res))
 print("Model Brier (all weeks):   ", round(res["brier"].mean(), 3))
-print("Model Brier (last 26 wks): ", round(res["brier"].iloc[-26:].mean(), 3))
+print(f"Model Brier (last {CLAIMS_RECENT_WINDOW} wks): ", round(res["brier"].iloc[-CLAIMS_RECENT_WINDOW:].mean(), 3))
 print("Random guessing:            0.667")
 
 # fairer baseline: constant odds equal to how often each outcome happened

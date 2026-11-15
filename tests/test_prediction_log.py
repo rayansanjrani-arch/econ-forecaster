@@ -5,7 +5,7 @@ import sys
 
 import pandas as pd
 
-sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
 from prediction_log import append_prediction, load_predictions
 
