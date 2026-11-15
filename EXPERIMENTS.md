@@ -1,5 +1,14 @@
 # Experiments log
 
+## 2026-11-15: Daily gold source check
+- FRED's older LBMA gold-fixing series is no longer available as a current series; Yahoo Finance's `GC=F` provides daily OHLCV, but represents COMEX futures rather than spot.
+- The Yahoo `XAUUSD=X` spot symbol returned no data during the source check.
+- A direct request for the FRED `GOLDPMGBD228NLBM` CSV also returned HTTP 404, so it cannot provide a daily comparison series at this time.
+- Decision: use `GC=F` provisionally for daily data and label the instrument as futures. Flag weekday gaps and moves above 5% for manual holiday/roll review. Do not interpret the series as spot or silently adjust roll jumps.
+- Data-quality check: the Yahoo history beginning in 2000 had 441 rows with inconsistent OHLC ordering, concentrated before 2012. The 2012–2018 sample also had two unexplained weekday gaps (2018-01-29 and 2018-12-05); CME's published schedule confirms COMEX metals traded normally on 2018-12-05. The sample therefore starts in 2019, and future unexplained gaps will fail validation rather than pass silently.
+- Downloaded sample: 1,982 daily rows from 2019-01-02 through 2026-11-13. The validator found 71 weekday gaps, all matching the configured U.S. federal holiday/Good Friday calendar, and no unexplained weekday gaps or OHLC errors. Six close-to-close changes exceeded 5%; each remains a review candidate, not an automatic correction. Raw bars are ignored by Git.
+- Open limitation: no direct spot/futures comparison was available, so large moves may include market moves or contract-roll effects. Resolve a suitable spot source and inspect roll dates before interpreting gold event-study results.
+
 ## 2026-11-11: Claims first-release revision
 - Observation: the first-reported claims value of 189,000 was later revised to 191,000.
 - Implication: current-vintage FRED pulls can change historical labels and backtest errors.

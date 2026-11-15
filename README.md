@@ -4,9 +4,9 @@ Econ Forecaster is a small research project for estimating probabilities around 
 
 ## Current status
 
-The repository currently has FRED pulls for core CPI and initial claims, a CPI and a claims probability script, a prediction log, Brier scoring, and a 104-week walk-forward claims backtest. The log contains one backfilled CPI result and one live claims result; those two observations are not enough to establish predictive value. The claims backtest reports Brier 0.654, compared with 0.667 for uniform guessing and 0.642 for a full-window constant-frequency reference. The latter uses outcomes from the complete test window and is only a diagnostic, not a deployable baseline.
+The repository currently has FRED pulls for core CPI and initial claims, a daily gold futures downloader, CPI and claims probability scripts, a prediction log, Brier scoring, and a 104-week walk-forward claims backtest. The log contains one backfilled CPI result and one live claims result; those two observations are not enough to establish predictive value. The claims backtest reports Brier 0.654, compared with 0.667 for uniform guessing and 0.642 for a full-window constant-frequency reference. The latter uses outcomes from the complete test window and is only a diagnostic, not a deployable baseline.
 
-Gold data, ALFRED first-release vintages, a release calendar, broad consensus history, and a gold event study are not implemented yet. Historical FRED data can be revised, so current-vintage backtests should not be treated as final evidence.
+ALFRED first-release vintages, a release calendar, broad consensus history, and a gold event study are not implemented yet. Historical FRED data can be revised, so current-vintage backtests should not be treated as final evidence.
 
 ## Setup
 
@@ -22,6 +22,8 @@ Run commands from the repository directory:
 
 ```powershell
 python src/fetch_cpi.py
+python src/fetch_gold.py
+python src/validate_gold.py
 python src/error_stats.py
 python src/cpi_errors.py
 python src/claims_stats.py
@@ -43,6 +45,8 @@ python src/predict_claims.py 194750
 python src/predict_cpi.py 0.2 0.3 2026-12-10
 python src/predict_cpi.py 0.2 0.3 2026-12-10 save
 ```
+
+`src/fetch_gold.py` downloads daily OHLCV for Yahoo Finance ticker `GC=F` from 2019 onward using `yfinance` and writes `data/raw/gold_gc_futures_daily.csv`. Earlier Yahoo rows had inconsistent OHLC ordering, and the 2012–2018 sample had weekday gaps that did not match the holiday calendar, so the chosen sample starts in 2019. The validator checks weekday gaps against U.S. federal holidays and Good Friday and stops if it finds an unexplained gap. It also reports close-to-close moves over 5% (which may be market moves or contract-roll effects) for review; it does not automatically fill or adjust them. The file includes the ticker, source, and UTC download timestamp. Raw data files are ignored by Git. This is a COMEX gold futures series, not a spot-price series. Yahoo’s `XAUUSD=X` spot proxy was unavailable when checked, and the retired FRED/LBMA daily gold fix could not serve as a current source.
 
 Score completed rows and inspect calibration:
 
