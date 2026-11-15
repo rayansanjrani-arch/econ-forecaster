@@ -1,5 +1,11 @@
 # Experiments log
 
+## 2026-11-15: Release calendar and first-release outcome capture
+- Added a manual calendar of scheduled CPI dates from the BLS release schedule, with the agency URL and checked date on each row. The next listed release is November 2026 CPI on December 10, 2026 at 8:30 a.m. Eastern.
+- Added a separate append-only outcome file. Outcome records retain first-reported values, the forecast/consensus comparison values, source link, and UTC recording timestamp. Scoring joins these outcomes to matching forecasts without editing the prediction log.
+- Decision: maintain the calendar manually and verify dates against official agency schedules; do not infer weekly claims dates during holiday weeks. Automated ALFRED imports and correction/version handling remain future work.
+- Validation: outcome capture requires a matching saved forecast and source URL, rejects duplicate results, and keeps existing prediction rows unchanged.
+
 ## 2026-11-15: Daily gold source check
 - FRED's older LBMA gold-fixing series is no longer available as a current series; Yahoo Finance's `GC=F` provides daily OHLCV, but represents COMEX futures rather than spot.
 - The Yahoo `XAUUSD=X` spot symbol returned no data during the source check.

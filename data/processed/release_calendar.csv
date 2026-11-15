@@ -1,0 +1,14 @@
+release_date,indicator,event,reference_period,release_time_et,source_url,checked_at_utc
+2026-12-10,core_cpi_mom,Consumer Price Index,November 2026,08:30 AM ET,https://www.bls.gov/schedule/news_release/cpi.htm,2026-11-15T00:00:00+00:00
+2027-01-13,core_cpi_mom,Consumer Price Index,December 2026,08:30 AM ET,https://www.bls.gov/schedule/news_release/cpi.htm,2026-11-15T00:00:00+00:00
+2027-02-11,core_cpi_mom,Consumer Price Index,January 2027,08:30 AM ET,https://www.bls.gov/schedule/news_release/cpi.htm,2026-11-15T00:00:00+00:00
+2027-03-10,core_cpi_mom,Consumer Price Index,February 2027,08:30 AM ET,https://www.bls.gov/schedule/news_release/cpi.htm,2026-11-15T00:00:00+00:00
+2027-04-13,core_cpi_mom,Consumer Price Index,March 2027,08:30 AM ET,https://www.bls.gov/schedule/news_release/cpi.htm,2026-11-15T00:00:00+00:00
+2027-05-12,core_cpi_mom,Consumer Price Index,April 2027,08:30 AM ET,https://www.bls.gov/schedule/news_release/cpi.htm,2026-11-15T00:00:00+00:00
+2027-06-10,core_cpi_mom,Consumer Price Index,May 2027,08:30 AM ET,https://www.bls.gov/schedule/news_release/cpi.htm,2026-11-15T00:00:00+00:00
+2027-07-14,core_cpi_mom,Consumer Price Index,June 2027,08:30 AM ET,https://www.bls.gov/schedule/news_release/cpi.htm,2026-11-15T00:00:00+00:00
+2027-08-11,core_cpi_mom,Consumer Price Index,July 2027,08:30 AM ET,https://www.bls.gov/schedule/news_release/cpi.htm,2026-11-15T00:00:00+00:00
+2027-09-14,core_cpi_mom,Consumer Price Index,August 2027,08:30 AM ET,https://www.bls.gov/schedule/news_release/cpi.htm,2026-11-15T00:00:00+00:00
+2027-10-14,core_cpi_mom,Consumer Price Index,September 2027,08:30 AM ET,https://www.bls.gov/schedule/news_release/cpi.htm,2026-11-15T00:00:00+00:00
+2027-11-10,core_cpi_mom,Consumer Price Index,October 2027,08:30 AM ET,https://www.bls.gov/schedule/news_release/cpi.htm,2026-11-15T00:00:00+00:00
+2027-12-10,core_cpi_mom,Consumer Price Index,November 2027,08:30 AM ET,https://www.bls.gov/schedule/news_release/cpi.htm,2026-11-15T00:00:00+00:00

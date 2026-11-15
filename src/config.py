@@ -14,6 +14,8 @@ REPORTS_DIR = PROJECT_ROOT / "reports"
 CPI_HISTORY_FILE = PROCESSED_DATA_DIR / "cpi_history.csv"
 PREDICTIONS_FILE = LOGS_DIR / "predictions.csv"
 GOLD_HISTORY_FILE = RAW_DATA_DIR / "gold_gc_futures_daily.csv"
+RELEASE_CALENDAR_FILE = PROCESSED_DATA_DIR / "release_calendar.csv"
+FIRST_RELEASE_OUTCOMES_FILE = PROCESSED_DATA_DIR / "first_release_outcomes.csv"
 
 FRED_GRAPH_URL = "https://fred.stlouisfed.org/graph/fredgraph.csv"
 CLAIMS_SERIES = "ICSA"

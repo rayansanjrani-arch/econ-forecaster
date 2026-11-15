@@ -5,7 +5,8 @@ import sys
 import pandas as pd
 
 from forecast_utils import OUTCOMES, brier_score
-from prediction_log import LOG_PATH, load_predictions
+from prediction_log import LOG_PATH
+from outcome_log import completed_predictions
 
 
 def add_scores(frame):
@@ -63,7 +64,7 @@ def calibration_table(done):
 
 
 def main(path=LOG_PATH):
-    predictions = load_predictions(path)
+    predictions = completed_predictions(prediction_path=path)
     if predictions.empty:
         print("No predictions in the log.")
         return
