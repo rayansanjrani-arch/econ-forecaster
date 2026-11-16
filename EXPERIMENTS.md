@@ -121,3 +121,23 @@
 - Checks passed: no comparison day is a release day or adjacent to one; all weekdays match; maximum distance is 29 sessions; no main-sample comparison day precedes 2020-06-01; comparison days are balanced before and after events (502 vs 500). 58 unit tests pass.
 - Note for Task 2.3.4: comparison days are shared between nearby events (628 unique days for 1,002 main-sample pairs; up to 5 events share one day). Uncertainty must resample by event or account for this sharing, not treat the 1,002 pairs as independent.
 - Note: the only four overlap-flagged events are scheduled for 2027, so the overlap rule removes no historical events at present.
+
+## 2026-11-16: Task 2.3.3 plan — release days versus matched ordinary days (declared before results)
+- Question: are gold moves on CPI, PPI and Employment Situation release days larger than on their matched ordinary days? Descriptive only; uncertainty intervals are Task 2.3.4.
+- Inputs: `data/processed/event_control_matches.csv` and `data/processed/gold_session_outcomes.csv`. Both groups take their values from the same session table. Output: `reports/event_vs_ordinary_summary.csv`.
+- Samples: main sample from 2020-06-01 is the primary result; the full sample is a secondary check reported alongside it.
+- Groups: each event type separately and all three pooled.
+- Release-day values: one per matched event. Ordinary-day values: one per event/ordinary-day pair, so a day shared by several events counts once per pair and each event's own comparison set is preserved.
+- Size measures: absolute return %, high-low range %, scaled move (absolute return / trailing 20-session volatility). Statistics: median, 75th and 90th percentile (pandas linear interpolation), release minus ordinary difference, and release / ordinary ratio.
+- Direction: median signed return and share of sessions with a positive return.
+- Counts reported with every row: events, pairs, unique ordinary days.
+- Practical margin, declared now for the later Layer 2 decision gate: a group is "practically larger" only if its median scaled move is at least 1.25 times the ordinary-day median, and that must later survive the Task 2.3.4 uncertainty intervals and window checks. Statistical significance alone will not count.
+
+## 2026-11-16: Task 2.3.3 result — release days versus matched ordinary days (descriptive)
+- Output: `reports/event_vs_ordinary_summary.csv` (88 rows). Built by `python src/compare_event_days.py`. No uncertainty intervals yet; Task 2.3.4 adds them.
+- Main sample (from 2020-06-01), median scaled move, release vs ordinary (ratio): Employment Situation 0.861 vs 0.546 (1.58, 67 events); PPI 0.678 vs 0.563 (1.20, 67); CPI 0.547 vs 0.565 (0.97, 67); all three pooled 0.658 vs 0.557 (1.18, 201 events, 1,002 pairs).
+- Employment Situation is the only group above the declared 1.25 practical margin in the main sample, and it is larger on absolute return (median 0.84% vs 0.56%) and range (1.63% vs 1.28%) as well. CPI shows no larger typical move; its range is about 14% wider.
+- Full sample (secondary check, includes the unreliable early-2019/2020 bars): Employment Situation falls to 1.16, so the result is sensitive to the sample period. All full-sample groups sit between 1.11 and 1.16.
+- Direction: no group shows a clear tendency for gold to rise or fall on release days (share of up days 0.51-0.57 for releases vs 0.55-0.57 for ordinary days).
+- Caution: Employment Situation comparison days are heavily shared (194 unique days for 333 pairs) because the releases fall on nearby Fridays; only 67 events per group. Ordinary days include unmarked FOMC, GDP, retail and claims days. Decision: no conclusion yet; Task 2.3.4 must show whether the Employment Situation difference survives event-resampled uncertainty intervals before it can count toward the Layer 2 gate.
+- Design change during this subtask: ratios are left blank for signed-return rows because a ratio of near-zero signed medians is not meaningful. 64 unit tests pass.

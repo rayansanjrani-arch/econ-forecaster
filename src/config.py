@@ -27,6 +27,7 @@ EVENT_DAY_TABLE_FILE = PROCESSED_DATA_DIR / "event_day_table.csv"
 EVENT_REACTIONS_FILE = PROCESSED_DATA_DIR / "event_reactions.csv"
 GOLD_SESSION_OUTCOMES_FILE = PROCESSED_DATA_DIR / "gold_session_outcomes.csv"
 EVENT_CONTROL_MATCHES_FILE = PROCESSED_DATA_DIR / "event_control_matches.csv"
+EVENT_COMPARISON_FILE = REPORTS_DIR / "event_vs_ordinary_summary.csv"
 
 FRED_GRAPH_URL = "https://fred.stlouisfed.org/graph/fredgraph.csv"
 CLAIMS_SERIES = "ICSA"
