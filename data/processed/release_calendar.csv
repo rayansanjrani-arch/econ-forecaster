@@ -1,4 +1,256 @@
 release_date,indicator,event,reference_period,release_time_et,source_url,checked_at_utc
+2019-01-04,employment_situation,Employment Situation (payrolls unemployment earnings),December 2018,08:30 AM ET,https://www.bls.gov/schedule/2019/home.htm,2026-11-15T19:52:28+00:00
+2019-01-11,core_cpi_mom,Consumer Price Index,December 2018,08:30 AM ET,https://www.bls.gov/schedule/2019/home.htm,2026-11-15T19:52:28+00:00
+2019-01-15,ppi,Producer Price Index,December 2018,08:30 AM ET,https://www.bls.gov/schedule/2019/home.htm,2026-11-15T19:52:28+00:00
+2019-02-01,employment_situation,Employment Situation (payrolls unemployment earnings),January 2019,08:30 AM ET,https://www.bls.gov/schedule/2019/home.htm,2026-11-15T19:52:28+00:00
+2019-02-13,core_cpi_mom,Consumer Price Index,January 2019,08:30 AM ET,https://www.bls.gov/schedule/2019/home.htm,2026-11-15T19:52:28+00:00
+2019-02-14,ppi,Producer Price Index,January 2019,08:30 AM ET,https://www.bls.gov/schedule/2019/home.htm,2026-11-15T19:52:28+00:00
+2019-03-08,employment_situation,Employment Situation (payrolls unemployment earnings),February 2019,08:30 AM ET,https://www.bls.gov/schedule/2019/home.htm,2026-11-15T19:52:28+00:00
+2019-03-12,core_cpi_mom,Consumer Price Index,February 2019,08:30 AM ET,https://www.bls.gov/schedule/2019/home.htm,2026-11-15T19:52:28+00:00
+2019-03-13,ppi,Producer Price Index,February 2019,08:30 AM ET,https://www.bls.gov/schedule/2019/home.htm,2026-11-15T19:52:28+00:00
+2019-04-05,employment_situation,Employment Situation (payrolls unemployment earnings),March 2019,08:30 AM ET,https://www.bls.gov/schedule/2019/home.htm,2026-11-15T19:52:28+00:00
+2019-04-10,core_cpi_mom,Consumer Price Index,March 2019,08:30 AM ET,https://www.bls.gov/schedule/2019/home.htm,2026-11-15T19:52:28+00:00
+2019-04-11,ppi,Producer Price Index,March 2019,08:30 AM ET,https://www.bls.gov/schedule/2019/home.htm,2026-11-15T19:52:28+00:00
+2019-05-03,employment_situation,Employment Situation (payrolls unemployment earnings),April 2019,08:30 AM ET,https://www.bls.gov/schedule/2019/home.htm,2026-11-15T19:52:28+00:00
+2019-05-09,ppi,Producer Price Index,April 2019,08:30 AM ET,https://www.bls.gov/schedule/2019/home.htm,2026-11-15T19:52:28+00:00
+2019-05-10,core_cpi_mom,Consumer Price Index,April 2019,08:30 AM ET,https://www.bls.gov/schedule/2019/home.htm,2026-11-15T19:52:28+00:00
+2019-06-07,employment_situation,Employment Situation (payrolls unemployment earnings),May 2019,08:30 AM ET,https://www.bls.gov/schedule/2019/home.htm,2026-11-15T19:52:28+00:00
+2019-06-11,ppi,Producer Price Index,May 2019,08:30 AM ET,https://www.bls.gov/schedule/2019/home.htm,2026-11-15T19:52:28+00:00
+2019-06-12,core_cpi_mom,Consumer Price Index,May 2019,08:30 AM ET,https://www.bls.gov/schedule/2019/home.htm,2026-11-15T19:52:28+00:00
+2019-07-05,employment_situation,Employment Situation (payrolls unemployment earnings),June 2019,08:30 AM ET,https://www.bls.gov/schedule/2019/home.htm,2026-11-15T19:52:28+00:00
+2019-07-11,core_cpi_mom,Consumer Price Index,June 2019,08:30 AM ET,https://www.bls.gov/schedule/2019/home.htm,2026-11-15T19:52:28+00:00
+2019-07-12,ppi,Producer Price Index,June 2019,08:30 AM ET,https://www.bls.gov/schedule/2019/home.htm,2026-11-15T19:52:28+00:00
+2019-08-02,employment_situation,Employment Situation (payrolls unemployment earnings),July 2019,08:30 AM ET,https://www.bls.gov/schedule/2019/home.htm,2026-11-15T19:52:28+00:00
+2019-08-09,ppi,Producer Price Index,July 2019,08:30 AM ET,https://www.bls.gov/schedule/2019/home.htm,2026-11-15T19:52:28+00:00
+2019-08-13,core_cpi_mom,Consumer Price Index,July 2019,08:30 AM ET,https://www.bls.gov/schedule/2019/home.htm,2026-11-15T19:52:28+00:00
+2019-09-06,employment_situation,Employment Situation (payrolls unemployment earnings),August 2019,08:30 AM ET,https://www.bls.gov/schedule/2019/home.htm,2026-11-15T19:52:28+00:00
+2019-09-11,ppi,Producer Price Index,August 2019,08:30 AM ET,https://www.bls.gov/schedule/2019/home.htm,2026-11-15T19:52:28+00:00
+2019-09-12,core_cpi_mom,Consumer Price Index,August 2019,08:30 AM ET,https://www.bls.gov/schedule/2019/home.htm,2026-11-15T19:52:28+00:00
+2019-10-04,employment_situation,Employment Situation (payrolls unemployment earnings),September 2019,08:30 AM ET,https://www.bls.gov/schedule/2019/home.htm,2026-11-15T19:52:28+00:00
+2019-10-08,ppi,Producer Price Index,September 2019,08:30 AM ET,https://www.bls.gov/schedule/2019/home.htm,2026-11-15T19:52:28+00:00
+2019-10-10,core_cpi_mom,Consumer Price Index,September 2019,08:30 AM ET,https://www.bls.gov/schedule/2019/home.htm,2026-11-15T19:52:28+00:00
+2019-11-01,employment_situation,Employment Situation (payrolls unemployment earnings),October 2019,08:30 AM ET,https://www.bls.gov/schedule/2019/home.htm,2026-11-15T19:52:28+00:00
+2019-11-13,core_cpi_mom,Consumer Price Index,October 2019,08:30 AM ET,https://www.bls.gov/schedule/2019/home.htm,2026-11-15T19:52:28+00:00
+2019-11-14,ppi,Producer Price Index,October 2019,08:30 AM ET,https://www.bls.gov/schedule/2019/home.htm,2026-11-15T19:52:28+00:00
+2019-12-06,employment_situation,Employment Situation (payrolls unemployment earnings),November 2019,08:30 AM ET,https://www.bls.gov/schedule/2019/home.htm,2026-11-15T19:52:28+00:00
+2019-12-11,core_cpi_mom,Consumer Price Index,November 2019,08:30 AM ET,https://www.bls.gov/schedule/2019/home.htm,2026-11-15T19:52:28+00:00
+2019-12-12,ppi,Producer Price Index,November 2019,08:30 AM ET,https://www.bls.gov/schedule/2019/home.htm,2026-11-15T19:52:28+00:00
+2020-01-10,employment_situation,Employment Situation (payrolls unemployment earnings),December 2019,08:30 AM ET,https://www.bls.gov/schedule/2020/home.htm,2026-11-15T19:52:28+00:00
+2020-01-14,core_cpi_mom,Consumer Price Index,December 2019,08:30 AM ET,https://www.bls.gov/schedule/2020/home.htm,2026-11-15T19:52:28+00:00
+2020-01-15,ppi,Producer Price Index,December 2019,08:30 AM ET,https://www.bls.gov/schedule/2020/home.htm,2026-11-15T19:52:28+00:00
+2020-02-07,employment_situation,Employment Situation (payrolls unemployment earnings),January 2020,08:30 AM ET,https://www.bls.gov/schedule/2020/home.htm,2026-11-15T19:52:28+00:00
+2020-02-13,core_cpi_mom,Consumer Price Index,January 2020,08:30 AM ET,https://www.bls.gov/schedule/2020/home.htm,2026-11-15T19:52:28+00:00
+2020-02-19,ppi,Producer Price Index,January 2020,08:30 AM ET,https://www.bls.gov/schedule/2020/home.htm,2026-11-15T19:52:28+00:00
+2020-03-06,employment_situation,Employment Situation (payrolls unemployment earnings),February 2020,08:30 AM ET,https://www.bls.gov/schedule/2020/home.htm,2026-11-15T19:52:28+00:00
+2020-03-11,core_cpi_mom,Consumer Price Index,February 2020,08:30 AM ET,https://www.bls.gov/schedule/2020/home.htm,2026-11-15T19:52:28+00:00
+2020-03-12,ppi,Producer Price Index,February 2020,08:30 AM ET,https://www.bls.gov/schedule/2020/home.htm,2026-11-15T19:52:28+00:00
+2020-04-03,employment_situation,Employment Situation (payrolls unemployment earnings),March 2020,08:30 AM ET,https://www.bls.gov/schedule/2020/home.htm,2026-11-15T19:52:28+00:00
+2020-04-09,ppi,Producer Price Index,March 2020,08:30 AM ET,https://www.bls.gov/schedule/2020/home.htm,2026-11-15T19:52:28+00:00
+2020-04-10,core_cpi_mom,Consumer Price Index,March 2020,08:30 AM ET,https://www.bls.gov/schedule/2020/home.htm,2026-11-15T19:52:28+00:00
+2020-05-08,employment_situation,Employment Situation (payrolls unemployment earnings),April 2020,08:30 AM ET,https://www.bls.gov/schedule/2020/home.htm,2026-11-15T19:52:28+00:00
+2020-05-12,core_cpi_mom,Consumer Price Index,April 2020,08:30 AM ET,https://www.bls.gov/schedule/2020/home.htm,2026-11-15T19:52:28+00:00
+2020-05-13,ppi,Producer Price Index,April 2020,08:30 AM ET,https://www.bls.gov/schedule/2020/home.htm,2026-11-15T19:52:28+00:00
+2020-06-05,employment_situation,Employment Situation (payrolls unemployment earnings),May 2020,08:30 AM ET,https://www.bls.gov/schedule/2020/home.htm,2026-11-15T19:52:28+00:00
+2020-06-10,core_cpi_mom,Consumer Price Index,May 2020,08:30 AM ET,https://www.bls.gov/schedule/2020/home.htm,2026-11-15T19:52:28+00:00
+2020-06-11,ppi,Producer Price Index,May 2020,08:30 AM ET,https://www.bls.gov/schedule/2020/home.htm,2026-11-15T19:52:28+00:00
+2020-07-02,employment_situation,Employment Situation (payrolls unemployment earnings),June 2020,08:30 AM ET,https://www.bls.gov/schedule/2020/home.htm,2026-11-15T19:52:28+00:00
+2020-07-10,ppi,Producer Price Index,June 2020,08:30 AM ET,https://www.bls.gov/schedule/2020/home.htm,2026-11-15T19:52:28+00:00
+2020-07-14,core_cpi_mom,Consumer Price Index,June 2020,08:30 AM ET,https://www.bls.gov/schedule/2020/home.htm,2026-11-15T19:52:28+00:00
+2020-08-07,employment_situation,Employment Situation (payrolls unemployment earnings),July 2020,08:30 AM ET,https://www.bls.gov/schedule/2020/home.htm,2026-11-15T19:52:28+00:00
+2020-08-11,ppi,Producer Price Index,July 2020,08:30 AM ET,https://www.bls.gov/schedule/2020/home.htm,2026-11-15T19:52:28+00:00
+2020-08-12,core_cpi_mom,Consumer Price Index,July 2020,08:30 AM ET,https://www.bls.gov/schedule/2020/home.htm,2026-11-15T19:52:28+00:00
+2020-09-04,employment_situation,Employment Situation (payrolls unemployment earnings),August 2020,08:30 AM ET,https://www.bls.gov/schedule/2020/home.htm,2026-11-15T19:52:28+00:00
+2020-09-10,ppi,Producer Price Index,August 2020,08:30 AM ET,https://www.bls.gov/schedule/2020/home.htm,2026-11-15T19:52:28+00:00
+2020-09-11,core_cpi_mom,Consumer Price Index,August 2020,08:30 AM ET,https://www.bls.gov/schedule/2020/home.htm,2026-11-15T19:52:28+00:00
+2020-10-02,employment_situation,Employment Situation (payrolls unemployment earnings),September 2020,08:30 AM ET,https://www.bls.gov/schedule/2020/home.htm,2026-11-15T19:52:28+00:00
+2020-10-13,core_cpi_mom,Consumer Price Index,September 2020,08:30 AM ET,https://www.bls.gov/schedule/2020/home.htm,2026-11-15T19:52:28+00:00
+2020-10-14,ppi,Producer Price Index,September 2020,08:30 AM ET,https://www.bls.gov/schedule/2020/home.htm,2026-11-15T19:52:28+00:00
+2020-11-06,employment_situation,Employment Situation (payrolls unemployment earnings),October 2020,08:30 AM ET,https://www.bls.gov/schedule/2020/home.htm,2026-11-15T19:52:28+00:00
+2020-11-12,core_cpi_mom,Consumer Price Index,October 2020,08:30 AM ET,https://www.bls.gov/schedule/2020/home.htm,2026-11-15T19:52:28+00:00
+2020-11-13,ppi,Producer Price Index,October 2020,08:30 AM ET,https://www.bls.gov/schedule/2020/home.htm,2026-11-15T19:52:28+00:00
+2020-12-04,employment_situation,Employment Situation (payrolls unemployment earnings),November 2020,08:30 AM ET,https://www.bls.gov/schedule/2020/home.htm,2026-11-15T19:52:28+00:00
+2020-12-10,core_cpi_mom,Consumer Price Index,November 2020,08:30 AM ET,https://www.bls.gov/schedule/2020/home.htm,2026-11-15T19:52:28+00:00
+2020-12-11,ppi,Producer Price Index,November 2020,08:30 AM ET,https://www.bls.gov/schedule/2020/home.htm,2026-11-15T19:52:28+00:00
+2021-01-08,employment_situation,Employment Situation (payrolls unemployment earnings),December 2020,08:30 AM ET,https://www.bls.gov/schedule/2021/home.htm,2026-11-16T14:24:30+00:00
+2021-01-13,core_cpi_mom,Consumer Price Index,December 2020,08:30 AM ET,https://www.bls.gov/schedule/2021/home.htm,2026-11-16T14:24:30+00:00
+2021-01-15,ppi,Producer Price Index,December 2020,08:30 AM ET,https://www.bls.gov/schedule/2021/home.htm,2026-11-16T14:24:30+00:00
+2021-02-05,employment_situation,Employment Situation (payrolls unemployment earnings),January 2021,08:30 AM ET,https://www.bls.gov/schedule/2021/home.htm,2026-11-16T14:24:30+00:00
+2021-02-10,core_cpi_mom,Consumer Price Index,January 2021,08:30 AM ET,https://www.bls.gov/schedule/2021/home.htm,2026-11-16T14:24:30+00:00
+2021-02-17,ppi,Producer Price Index,January 2021,08:30 AM ET,https://www.bls.gov/schedule/2021/home.htm,2026-11-16T14:24:30+00:00
+2021-03-05,employment_situation,Employment Situation (payrolls unemployment earnings),February 2021,08:30 AM ET,https://www.bls.gov/schedule/2021/home.htm,2026-11-16T14:24:30+00:00
+2021-03-10,core_cpi_mom,Consumer Price Index,February 2021,08:30 AM ET,https://www.bls.gov/schedule/2021/home.htm,2026-11-16T14:24:30+00:00
+2021-03-12,ppi,Producer Price Index,February 2021,08:30 AM ET,https://www.bls.gov/schedule/2021/home.htm,2026-11-16T14:24:30+00:00
+2021-04-02,employment_situation,Employment Situation (payrolls unemployment earnings),March 2021,08:30 AM ET,https://www.bls.gov/schedule/2021/home.htm,2026-11-16T14:24:30+00:00
+2021-04-09,ppi,Producer Price Index,March 2021,08:30 AM ET,https://www.bls.gov/schedule/2021/home.htm,2026-11-16T14:24:30+00:00
+2021-04-13,core_cpi_mom,Consumer Price Index,March 2021,08:30 AM ET,https://www.bls.gov/schedule/2021/home.htm,2026-11-16T14:24:30+00:00
+2021-05-07,employment_situation,Employment Situation (payrolls unemployment earnings),April 2021,08:30 AM ET,https://www.bls.gov/schedule/2021/home.htm,2026-11-16T14:24:30+00:00
+2021-05-12,core_cpi_mom,Consumer Price Index,April 2021,08:30 AM ET,https://www.bls.gov/schedule/2021/home.htm,2026-11-16T14:24:30+00:00
+2021-05-13,ppi,Producer Price Index,April 2021,08:30 AM ET,https://www.bls.gov/schedule/2021/home.htm,2026-11-16T14:24:30+00:00
+2021-06-04,employment_situation,Employment Situation (payrolls unemployment earnings),May 2021,08:30 AM ET,https://www.bls.gov/schedule/2021/home.htm,2026-11-16T14:24:30+00:00
+2021-06-10,core_cpi_mom,Consumer Price Index,May 2021,08:30 AM ET,https://www.bls.gov/schedule/2021/home.htm,2026-11-16T14:24:30+00:00
+2021-06-15,ppi,Producer Price Index,May 2021,08:30 AM ET,https://www.bls.gov/schedule/2021/home.htm,2026-11-16T14:24:30+00:00
+2021-07-02,employment_situation,Employment Situation (payrolls unemployment earnings),June 2021,08:30 AM ET,https://www.bls.gov/schedule/2021/home.htm,2026-11-16T14:24:30+00:00
+2021-07-13,core_cpi_mom,Consumer Price Index,June 2021,08:30 AM ET,https://www.bls.gov/schedule/2021/home.htm,2026-11-16T14:24:30+00:00
+2021-07-14,ppi,Producer Price Index,June 2021,08:30 AM ET,https://www.bls.gov/schedule/2021/home.htm,2026-11-16T14:24:30+00:00
+2021-08-06,employment_situation,Employment Situation (payrolls unemployment earnings),July 2021,08:30 AM ET,https://www.bls.gov/schedule/2021/home.htm,2026-11-16T14:24:30+00:00
+2021-08-11,core_cpi_mom,Consumer Price Index,July 2021,08:30 AM ET,https://www.bls.gov/schedule/2021/home.htm,2026-11-16T14:24:30+00:00
+2021-08-12,ppi,Producer Price Index,July 2021,08:30 AM ET,https://www.bls.gov/schedule/2021/home.htm,2026-11-16T14:24:30+00:00
+2021-09-03,employment_situation,Employment Situation (payrolls unemployment earnings),August 2021,08:30 AM ET,https://www.bls.gov/schedule/2021/home.htm,2026-11-16T14:24:30+00:00
+2021-09-10,ppi,Producer Price Index,August 2021,08:30 AM ET,https://www.bls.gov/schedule/2021/home.htm,2026-11-16T14:24:30+00:00
+2021-09-14,core_cpi_mom,Consumer Price Index,August 2021,08:30 AM ET,https://www.bls.gov/schedule/2021/home.htm,2026-11-16T14:24:30+00:00
+2021-10-08,employment_situation,Employment Situation (payrolls unemployment earnings),September 2021,08:30 AM ET,https://www.bls.gov/schedule/2021/home.htm,2026-11-16T14:24:30+00:00
+2021-10-13,core_cpi_mom,Consumer Price Index,September 2021,08:30 AM ET,https://www.bls.gov/schedule/2021/home.htm,2026-11-16T14:24:30+00:00
+2021-10-14,ppi,Producer Price Index,September 2021,08:30 AM ET,https://www.bls.gov/schedule/2021/home.htm,2026-11-16T14:24:30+00:00
+2021-11-05,employment_situation,Employment Situation (payrolls unemployment earnings),October 2021,08:30 AM ET,https://www.bls.gov/schedule/2021/home.htm,2026-11-16T14:24:30+00:00
+2021-11-09,ppi,Producer Price Index,October 2021,08:30 AM ET,https://www.bls.gov/schedule/2021/home.htm,2026-11-16T14:24:30+00:00
+2021-11-10,core_cpi_mom,Consumer Price Index,October 2021,08:30 AM ET,https://www.bls.gov/schedule/2021/home.htm,2026-11-16T14:24:30+00:00
+2021-12-03,employment_situation,Employment Situation (payrolls unemployment earnings),November 2021,08:30 AM ET,https://www.bls.gov/schedule/2021/home.htm,2026-11-16T14:24:30+00:00
+2021-12-10,core_cpi_mom,Consumer Price Index,November 2021,08:30 AM ET,https://www.bls.gov/schedule/2021/home.htm,2026-11-16T14:24:30+00:00
+2021-12-14,ppi,Producer Price Index,November 2021,08:30 AM ET,https://www.bls.gov/schedule/2021/home.htm,2026-11-16T14:24:30+00:00
+2022-01-07,employment_situation,Employment Situation (payrolls unemployment earnings),December 2021,08:30 AM ET,https://www.bls.gov/schedule/2022/home.htm,2026-11-16T14:24:30+00:00
+2022-01-12,core_cpi_mom,Consumer Price Index,December 2021,08:30 AM ET,https://www.bls.gov/schedule/2022/home.htm,2026-11-16T14:24:30+00:00
+2022-01-13,ppi,Producer Price Index,December 2021,08:30 AM ET,https://www.bls.gov/schedule/2022/home.htm,2026-11-16T14:24:30+00:00
+2022-02-04,employment_situation,Employment Situation (payrolls unemployment earnings),January 2022,08:30 AM ET,https://www.bls.gov/schedule/2022/home.htm,2026-11-16T14:24:30+00:00
+2022-02-10,core_cpi_mom,Consumer Price Index,January 2022,08:30 AM ET,https://www.bls.gov/schedule/2022/home.htm,2026-11-16T14:24:30+00:00
+2022-02-15,ppi,Producer Price Index,January 2022,08:30 AM ET,https://www.bls.gov/schedule/2022/home.htm,2026-11-16T14:24:30+00:00
+2022-03-04,employment_situation,Employment Situation (payrolls unemployment earnings),February 2022,08:30 AM ET,https://www.bls.gov/schedule/2022/home.htm,2026-11-16T14:24:30+00:00
+2022-03-10,core_cpi_mom,Consumer Price Index,February 2022,08:30 AM ET,https://www.bls.gov/schedule/2022/home.htm,2026-11-16T14:24:30+00:00
+2022-03-15,ppi,Producer Price Index,February 2022,08:30 AM ET,https://www.bls.gov/schedule/2022/home.htm,2026-11-16T14:24:30+00:00
+2022-04-01,employment_situation,Employment Situation (payrolls unemployment earnings),March 2022,08:30 AM ET,https://www.bls.gov/schedule/2022/home.htm,2026-11-16T14:24:30+00:00
+2022-04-12,core_cpi_mom,Consumer Price Index,March 2022,08:30 AM ET,https://www.bls.gov/schedule/2022/home.htm,2026-11-16T14:24:30+00:00
+2022-04-13,ppi,Producer Price Index,March 2022,08:30 AM ET,https://www.bls.gov/schedule/2022/home.htm,2026-11-16T14:24:30+00:00
+2022-05-06,employment_situation,Employment Situation (payrolls unemployment earnings),April 2022,08:30 AM ET,https://www.bls.gov/schedule/2022/home.htm,2026-11-16T14:24:30+00:00
+2022-05-11,core_cpi_mom,Consumer Price Index,April 2022,08:30 AM ET,https://www.bls.gov/schedule/2022/home.htm,2026-11-16T14:24:30+00:00
+2022-05-12,ppi,Producer Price Index,April 2022,08:30 AM ET,https://www.bls.gov/schedule/2022/home.htm,2026-11-16T14:24:30+00:00
+2022-06-03,employment_situation,Employment Situation (payrolls unemployment earnings),May 2022,08:30 AM ET,https://www.bls.gov/schedule/2022/home.htm,2026-11-16T14:24:30+00:00
+2022-06-10,core_cpi_mom,Consumer Price Index,May 2022,08:30 AM ET,https://www.bls.gov/schedule/2022/home.htm,2026-11-16T14:24:30+00:00
+2022-06-14,ppi,Producer Price Index,May 2022,08:30 AM ET,https://www.bls.gov/schedule/2022/home.htm,2026-11-16T14:24:30+00:00
+2022-07-08,employment_situation,Employment Situation (payrolls unemployment earnings),June 2022,08:30 AM ET,https://www.bls.gov/schedule/2022/home.htm,2026-11-16T14:24:30+00:00
+2022-07-13,core_cpi_mom,Consumer Price Index,June 2022,08:30 AM ET,https://www.bls.gov/schedule/2022/home.htm,2026-11-16T14:24:30+00:00
+2022-07-14,ppi,Producer Price Index,June 2022,08:30 AM ET,https://www.bls.gov/schedule/2022/home.htm,2026-11-16T14:24:30+00:00
+2022-08-05,employment_situation,Employment Situation (payrolls unemployment earnings),July 2022,08:30 AM ET,https://www.bls.gov/schedule/2022/home.htm,2026-11-16T14:24:30+00:00
+2022-08-10,core_cpi_mom,Consumer Price Index,July 2022,08:30 AM ET,https://www.bls.gov/schedule/2022/home.htm,2026-11-16T14:24:30+00:00
+2022-08-11,ppi,Producer Price Index,July 2022,08:30 AM ET,https://www.bls.gov/schedule/2022/home.htm,2026-11-16T14:24:30+00:00
+2022-09-02,employment_situation,Employment Situation (payrolls unemployment earnings),August 2022,08:30 AM ET,https://www.bls.gov/schedule/2022/home.htm,2026-11-16T14:24:30+00:00
+2022-09-13,core_cpi_mom,Consumer Price Index,August 2022,08:30 AM ET,https://www.bls.gov/schedule/2022/home.htm,2026-11-16T14:24:30+00:00
+2022-09-14,ppi,Producer Price Index,August 2022,08:30 AM ET,https://www.bls.gov/schedule/2022/home.htm,2026-11-16T14:24:30+00:00
+2022-10-07,employment_situation,Employment Situation (payrolls unemployment earnings),September 2022,08:30 AM ET,https://www.bls.gov/schedule/2022/home.htm,2026-11-16T14:24:30+00:00
+2022-10-12,ppi,Producer Price Index,September 2022,08:30 AM ET,https://www.bls.gov/schedule/2022/home.htm,2026-11-16T14:24:30+00:00
+2022-10-13,core_cpi_mom,Consumer Price Index,September 2022,08:30 AM ET,https://www.bls.gov/schedule/2022/home.htm,2026-11-16T14:24:30+00:00
+2022-11-04,employment_situation,Employment Situation (payrolls unemployment earnings),October 2022,08:30 AM ET,https://www.bls.gov/schedule/2022/home.htm,2026-11-16T14:24:30+00:00
+2022-11-10,core_cpi_mom,Consumer Price Index,October 2022,08:30 AM ET,https://www.bls.gov/schedule/2022/home.htm,2026-11-16T14:24:30+00:00
+2022-11-15,ppi,Producer Price Index,October 2022,08:30 AM ET,https://www.bls.gov/schedule/2022/home.htm,2026-11-16T14:24:30+00:00
+2022-12-02,employment_situation,Employment Situation (payrolls unemployment earnings),November 2022,08:30 AM ET,https://www.bls.gov/schedule/2022/home.htm,2026-11-16T14:24:30+00:00
+2022-12-09,ppi,Producer Price Index,November 2022,08:30 AM ET,https://www.bls.gov/schedule/2022/home.htm,2026-11-16T14:24:30+00:00
+2022-12-13,core_cpi_mom,Consumer Price Index,November 2022,08:30 AM ET,https://www.bls.gov/schedule/2022/home.htm,2026-11-16T14:24:30+00:00
+2023-01-06,employment_situation,Employment Situation (payrolls unemployment earnings),December 2022,08:30 AM ET,https://www.bls.gov/schedule/2023/home.htm,2026-11-16T14:26:29+00:00
+2023-01-12,core_cpi_mom,Consumer Price Index,December 2022,08:30 AM ET,https://www.bls.gov/schedule/2023/home.htm,2026-11-16T14:26:29+00:00
+2023-01-18,ppi,Producer Price Index,December 2022,08:30 AM ET,https://www.bls.gov/schedule/2023/home.htm,2026-11-16T14:26:29+00:00
+2023-02-03,employment_situation,Employment Situation (payrolls unemployment earnings),January 2023,08:30 AM ET,https://www.bls.gov/schedule/2023/home.htm,2026-11-16T14:26:29+00:00
+2023-02-14,core_cpi_mom,Consumer Price Index,January 2023,08:30 AM ET,https://www.bls.gov/schedule/2023/home.htm,2026-11-16T14:26:29+00:00
+2023-02-16,ppi,Producer Price Index,January 2023,08:30 AM ET,https://www.bls.gov/schedule/2023/home.htm,2026-11-16T14:26:29+00:00
+2023-03-10,employment_situation,Employment Situation (payrolls unemployment earnings),February 2023,08:30 AM ET,https://www.bls.gov/schedule/2023/home.htm,2026-11-16T14:26:29+00:00
+2023-03-14,core_cpi_mom,Consumer Price Index,February 2023,08:30 AM ET,https://www.bls.gov/schedule/2023/home.htm,2026-11-16T14:26:29+00:00
+2023-03-15,ppi,Producer Price Index,February 2023,08:30 AM ET,https://www.bls.gov/schedule/2023/home.htm,2026-11-16T14:26:29+00:00
+2023-04-07,employment_situation,Employment Situation (payrolls unemployment earnings),March 2023,08:30 AM ET,https://www.bls.gov/schedule/2023/home.htm,2026-11-16T14:26:29+00:00
+2023-04-12,core_cpi_mom,Consumer Price Index,March 2023,08:30 AM ET,https://www.bls.gov/schedule/2023/home.htm,2026-11-16T14:26:29+00:00
+2023-04-13,ppi,Producer Price Index,March 2023,08:30 AM ET,https://www.bls.gov/schedule/2023/home.htm,2026-11-16T14:26:29+00:00
+2023-05-05,employment_situation,Employment Situation (payrolls unemployment earnings),April 2023,08:30 AM ET,https://www.bls.gov/schedule/2023/home.htm,2026-11-16T14:26:29+00:00
+2023-05-10,core_cpi_mom,Consumer Price Index,April 2023,08:30 AM ET,https://www.bls.gov/schedule/2023/home.htm,2026-11-16T14:26:29+00:00
+2023-05-11,ppi,Producer Price Index,April 2023,08:30 AM ET,https://www.bls.gov/schedule/2023/home.htm,2026-11-16T14:26:29+00:00
+2023-06-02,employment_situation,Employment Situation (payrolls unemployment earnings),May 2023,08:30 AM ET,https://www.bls.gov/schedule/2023/home.htm,2026-11-16T14:26:29+00:00
+2023-06-13,core_cpi_mom,Consumer Price Index,May 2023,08:30 AM ET,https://www.bls.gov/schedule/2023/home.htm,2026-11-16T14:26:29+00:00
+2023-06-14,ppi,Producer Price Index,May 2023,08:30 AM ET,https://www.bls.gov/schedule/2023/home.htm,2026-11-16T14:26:29+00:00
+2023-07-07,employment_situation,Employment Situation (payrolls unemployment earnings),June 2023,08:30 AM ET,https://www.bls.gov/schedule/2023/home.htm,2026-11-16T14:26:29+00:00
+2023-07-12,core_cpi_mom,Consumer Price Index,June 2023,08:30 AM ET,https://www.bls.gov/schedule/2023/home.htm,2026-11-16T14:26:29+00:00
+2023-07-13,ppi,Producer Price Index,June 2023,08:30 AM ET,https://www.bls.gov/schedule/2023/home.htm,2026-11-16T14:26:29+00:00
+2023-08-04,employment_situation,Employment Situation (payrolls unemployment earnings),July 2023,08:30 AM ET,https://www.bls.gov/schedule/2023/home.htm,2026-11-16T14:26:29+00:00
+2023-08-10,core_cpi_mom,Consumer Price Index,July 2023,08:30 AM ET,https://www.bls.gov/schedule/2023/home.htm,2026-11-16T14:26:29+00:00
+2023-08-11,ppi,Producer Price Index,July 2023,08:30 AM ET,https://www.bls.gov/schedule/2023/home.htm,2026-11-16T14:26:29+00:00
+2023-09-01,employment_situation,Employment Situation (payrolls unemployment earnings),August 2023,08:30 AM ET,https://www.bls.gov/schedule/2023/home.htm,2026-11-16T14:26:29+00:00
+2023-09-13,core_cpi_mom,Consumer Price Index,August 2023,08:30 AM ET,https://www.bls.gov/schedule/2023/home.htm,2026-11-16T14:26:29+00:00
+2023-09-14,ppi,Producer Price Index,August 2023,08:30 AM ET,https://www.bls.gov/schedule/2023/home.htm,2026-11-16T14:26:29+00:00
+2023-10-06,employment_situation,Employment Situation (payrolls unemployment earnings),September 2023,08:30 AM ET,https://www.bls.gov/schedule/2023/home.htm,2026-11-16T14:26:29+00:00
+2023-10-11,ppi,Producer Price Index,September 2023,08:30 AM ET,https://www.bls.gov/schedule/2023/home.htm,2026-11-16T14:26:29+00:00
+2023-10-12,core_cpi_mom,Consumer Price Index,September 2023,08:30 AM ET,https://www.bls.gov/schedule/2023/home.htm,2026-11-16T14:26:29+00:00
+2023-11-03,employment_situation,Employment Situation (payrolls unemployment earnings),October 2023,08:30 AM ET,https://www.bls.gov/schedule/2023/home.htm,2026-11-16T14:26:29+00:00
+2023-11-14,core_cpi_mom,Consumer Price Index,October 2023,08:30 AM ET,https://www.bls.gov/schedule/2023/home.htm,2026-11-16T14:26:29+00:00
+2023-11-15,ppi,Producer Price Index,October 2023,08:30 AM ET,https://www.bls.gov/schedule/2023/home.htm,2026-11-16T14:26:29+00:00
+2023-12-08,employment_situation,Employment Situation (payrolls unemployment earnings),November 2023,08:30 AM ET,https://www.bls.gov/schedule/2023/home.htm,2026-11-16T14:26:29+00:00
+2023-12-12,core_cpi_mom,Consumer Price Index,November 2023,08:30 AM ET,https://www.bls.gov/schedule/2023/home.htm,2026-11-16T14:26:29+00:00
+2023-12-13,ppi,Producer Price Index,November 2023,08:30 AM ET,https://www.bls.gov/schedule/2023/home.htm,2026-11-16T14:26:29+00:00
+2024-01-05,employment_situation,Employment Situation (payrolls unemployment earnings),December 2023,08:30 AM ET,https://www.bls.gov/schedule/2024/home.htm,2026-11-16T14:27:17+00:00
+2024-01-11,core_cpi_mom,Consumer Price Index,December 2023,08:30 AM ET,https://www.bls.gov/schedule/2024/home.htm,2026-11-16T14:27:17+00:00
+2024-01-12,ppi,Producer Price Index,December 2023,08:30 AM ET,https://www.bls.gov/schedule/2024/home.htm,2026-11-16T14:27:17+00:00
+2024-02-02,employment_situation,Employment Situation (payrolls unemployment earnings),January 2024,08:30 AM ET,https://www.bls.gov/schedule/2024/home.htm,2026-11-16T14:27:17+00:00
+2024-02-13,core_cpi_mom,Consumer Price Index,January 2024,08:30 AM ET,https://www.bls.gov/schedule/2024/home.htm,2026-11-16T14:27:17+00:00
+2024-02-16,ppi,Producer Price Index,January 2024,08:30 AM ET,https://www.bls.gov/schedule/2024/home.htm,2026-11-16T14:27:17+00:00
+2024-03-08,employment_situation,Employment Situation (payrolls unemployment earnings),February 2024,08:30 AM ET,https://www.bls.gov/schedule/2024/home.htm,2026-11-16T14:27:17+00:00
+2024-03-12,core_cpi_mom,Consumer Price Index,February 2024,08:30 AM ET,https://www.bls.gov/schedule/2024/home.htm,2026-11-16T14:27:17+00:00
+2024-03-14,ppi,Producer Price Index,February 2024,08:30 AM ET,https://www.bls.gov/schedule/2024/home.htm,2026-11-16T14:27:17+00:00
+2024-04-05,employment_situation,Employment Situation (payrolls unemployment earnings),March 2024,08:30 AM ET,https://www.bls.gov/schedule/2024/home.htm,2026-11-16T14:27:17+00:00
+2024-04-10,core_cpi_mom,Consumer Price Index,March 2024,08:30 AM ET,https://www.bls.gov/schedule/2024/home.htm,2026-11-16T14:27:17+00:00
+2024-04-11,ppi,Producer Price Index,March 2024,08:30 AM ET,https://www.bls.gov/schedule/2024/home.htm,2026-11-16T14:27:17+00:00
+2024-05-03,employment_situation,Employment Situation (payrolls unemployment earnings),April 2024,08:30 AM ET,https://www.bls.gov/schedule/2024/home.htm,2026-11-16T14:27:17+00:00
+2024-05-14,ppi,Producer Price Index,April 2024,08:30 AM ET,https://www.bls.gov/schedule/2024/home.htm,2026-11-16T14:27:17+00:00
+2024-05-15,core_cpi_mom,Consumer Price Index,April 2024,08:30 AM ET,https://www.bls.gov/schedule/2024/home.htm,2026-11-16T14:27:17+00:00
+2024-06-07,employment_situation,Employment Situation (payrolls unemployment earnings),May 2024,08:30 AM ET,https://www.bls.gov/schedule/2024/home.htm,2026-11-16T14:27:17+00:00
+2024-06-12,core_cpi_mom,Consumer Price Index,May 2024,08:30 AM ET,https://www.bls.gov/schedule/2024/home.htm,2026-11-16T14:27:17+00:00
+2024-06-13,ppi,Producer Price Index,May 2024,08:30 AM ET,https://www.bls.gov/schedule/2024/home.htm,2026-11-16T14:27:17+00:00
+2024-07-05,employment_situation,Employment Situation (payrolls unemployment earnings),June 2024,08:30 AM ET,https://www.bls.gov/schedule/2024/home.htm,2026-11-16T14:27:17+00:00
+2024-07-11,core_cpi_mom,Consumer Price Index,June 2024,08:30 AM ET,https://www.bls.gov/schedule/2024/home.htm,2026-11-16T14:27:17+00:00
+2024-07-12,ppi,Producer Price Index,June 2024,08:30 AM ET,https://www.bls.gov/schedule/2024/home.htm,2026-11-16T14:27:17+00:00
+2024-08-02,employment_situation,Employment Situation (payrolls unemployment earnings),July 2024,08:30 AM ET,https://www.bls.gov/schedule/2024/home.htm,2026-11-16T14:27:17+00:00
+2024-08-13,ppi,Producer Price Index,July 2024,08:30 AM ET,https://www.bls.gov/schedule/2024/home.htm,2026-11-16T14:27:17+00:00
+2024-08-14,core_cpi_mom,Consumer Price Index,July 2024,08:30 AM ET,https://www.bls.gov/schedule/2024/home.htm,2026-11-16T14:27:17+00:00
+2024-09-06,employment_situation,Employment Situation (payrolls unemployment earnings),August 2024,08:30 AM ET,https://www.bls.gov/schedule/2024/home.htm,2026-11-16T14:27:17+00:00
+2024-09-11,core_cpi_mom,Consumer Price Index,August 2024,08:30 AM ET,https://www.bls.gov/schedule/2024/home.htm,2026-11-16T14:27:17+00:00
+2024-09-12,ppi,Producer Price Index,August 2024,08:30 AM ET,https://www.bls.gov/schedule/2024/home.htm,2026-11-16T14:27:17+00:00
+2024-10-04,employment_situation,Employment Situation (payrolls unemployment earnings),September 2024,08:30 AM ET,https://www.bls.gov/schedule/2024/home.htm,2026-11-16T14:27:17+00:00
+2024-10-10,core_cpi_mom,Consumer Price Index,September 2024,08:30 AM ET,https://www.bls.gov/schedule/2024/home.htm,2026-11-16T14:27:17+00:00
+2024-10-11,ppi,Producer Price Index,September 2024,08:30 AM ET,https://www.bls.gov/schedule/2024/home.htm,2026-11-16T14:27:17+00:00
+2024-11-01,employment_situation,Employment Situation (payrolls unemployment earnings),October 2024,08:30 AM ET,https://www.bls.gov/schedule/2024/home.htm,2026-11-16T14:27:17+00:00
+2024-11-13,core_cpi_mom,Consumer Price Index,October 2024,08:30 AM ET,https://www.bls.gov/schedule/2024/home.htm,2026-11-16T14:27:17+00:00
+2024-11-14,ppi,Producer Price Index,October 2024,08:30 AM ET,https://www.bls.gov/schedule/2024/home.htm,2026-11-16T14:27:17+00:00
+2024-12-06,employment_situation,Employment Situation (payrolls unemployment earnings),November 2024,08:30 AM ET,https://www.bls.gov/schedule/2024/home.htm,2026-11-16T14:27:17+00:00
+2024-12-11,core_cpi_mom,Consumer Price Index,November 2024,08:30 AM ET,https://www.bls.gov/schedule/2024/home.htm,2026-11-16T14:27:17+00:00
+2024-12-12,ppi,Producer Price Index,November 2024,08:30 AM ET,https://www.bls.gov/schedule/2024/home.htm,2026-11-16T14:27:17+00:00
+2025-01-10,employment_situation,Employment Situation (payrolls unemployment earnings),December 2024,08:30 AM ET,https://www.bls.gov/schedule/2025/home.htm,2026-11-16T14:30:00+00:00
+2025-01-14,ppi,Producer Price Index,December 2024,08:30 AM ET,https://www.bls.gov/schedule/2025/home.htm,2026-11-16T14:30:00+00:00
+2025-01-15,core_cpi_mom,Consumer Price Index,December 2024,08:30 AM ET,https://www.bls.gov/schedule/2025/home.htm,2026-11-16T14:30:00+00:00
+2025-02-07,employment_situation,Employment Situation (payrolls unemployment earnings),January 2025,08:30 AM ET,https://www.bls.gov/schedule/2025/home.htm,2026-11-16T14:30:00+00:00
+2025-02-12,core_cpi_mom,Consumer Price Index,January 2025,08:30 AM ET,https://www.bls.gov/schedule/2025/home.htm,2026-11-16T14:30:00+00:00
+2025-02-13,ppi,Producer Price Index,January 2025,08:30 AM ET,https://www.bls.gov/schedule/2025/home.htm,2026-11-16T14:30:00+00:00
+2025-03-07,employment_situation,Employment Situation (payrolls unemployment earnings),February 2025,08:30 AM ET,https://www.bls.gov/schedule/2025/home.htm,2026-11-16T14:30:00+00:00
+2025-03-12,core_cpi_mom,Consumer Price Index,February 2025,08:30 AM ET,https://www.bls.gov/schedule/2025/home.htm,2026-11-16T14:30:00+00:00
+2025-03-13,ppi,Producer Price Index,February 2025,08:30 AM ET,https://www.bls.gov/schedule/2025/home.htm,2026-11-16T14:30:00+00:00
+2025-04-04,employment_situation,Employment Situation (payrolls unemployment earnings),March 2025,08:30 AM ET,https://www.bls.gov/schedule/2025/home.htm,2026-11-16T14:30:00+00:00
+2025-04-10,core_cpi_mom,Consumer Price Index,March 2025,08:30 AM ET,https://www.bls.gov/schedule/2025/home.htm,2026-11-16T14:30:00+00:00
+2025-04-11,ppi,Producer Price Index,March 2025,08:30 AM ET,https://www.bls.gov/schedule/2025/home.htm,2026-11-16T14:30:00+00:00
+2025-05-02,employment_situation,Employment Situation (payrolls unemployment earnings),April 2025,08:30 AM ET,https://www.bls.gov/schedule/2025/home.htm,2026-11-16T14:30:00+00:00
+2025-05-13,core_cpi_mom,Consumer Price Index,April 2025,08:30 AM ET,https://www.bls.gov/schedule/2025/home.htm,2026-11-16T14:30:00+00:00
+2025-05-15,ppi,Producer Price Index,April 2025,08:30 AM ET,https://www.bls.gov/schedule/2025/home.htm,2026-11-16T14:30:00+00:00
+2025-06-06,employment_situation,Employment Situation (payrolls unemployment earnings),May 2025,08:30 AM ET,https://www.bls.gov/schedule/2025/home.htm,2026-11-16T14:30:00+00:00
+2025-06-11,core_cpi_mom,Consumer Price Index,May 2025,08:30 AM ET,https://www.bls.gov/schedule/2025/home.htm,2026-11-16T14:30:00+00:00
+2025-06-12,ppi,Producer Price Index,May 2025,08:30 AM ET,https://www.bls.gov/schedule/2025/home.htm,2026-11-16T14:30:00+00:00
+2025-07-03,employment_situation,Employment Situation (payrolls unemployment earnings),June 2025,08:30 AM ET,https://www.bls.gov/schedule/2025/home.htm,2026-11-16T14:30:00+00:00
+2025-07-15,core_cpi_mom,Consumer Price Index,June 2025,08:30 AM ET,https://www.bls.gov/schedule/2025/home.htm,2026-11-16T14:30:00+00:00
+2025-07-16,ppi,Producer Price Index,June 2025,08:30 AM ET,https://www.bls.gov/schedule/2025/home.htm,2026-11-16T14:30:00+00:00
+2025-08-01,employment_situation,Employment Situation (payrolls unemployment earnings),July 2025,08:30 AM ET,https://www.bls.gov/schedule/2025/home.htm,2026-11-16T14:30:00+00:00
+2025-08-12,core_cpi_mom,Consumer Price Index,July 2025,08:30 AM ET,https://www.bls.gov/schedule/2025/home.htm,2026-11-16T14:30:00+00:00
+2025-08-14,ppi,Producer Price Index,July 2025,08:30 AM ET,https://www.bls.gov/schedule/2025/home.htm,2026-11-16T14:30:00+00:00
+2025-09-05,employment_situation,Employment Situation (payrolls unemployment earnings),August 2025,08:30 AM ET,https://www.bls.gov/schedule/2025/home.htm,2026-11-16T14:30:00+00:00
+2025-09-10,ppi,Producer Price Index,August 2025,08:30 AM ET,https://www.bls.gov/schedule/2025/home.htm,2026-11-16T14:30:00+00:00
+2025-09-11,core_cpi_mom,Consumer Price Index,August 2025,08:30 AM ET,https://www.bls.gov/schedule/2025/home.htm,2026-11-16T14:30:00+00:00
+2025-10-24,core_cpi_mom,Consumer Price Index,September 2025,08:30 AM ET,https://www.bls.gov/bls/2025-lapse-revised-release-dates.htm,2026-11-16T14:30:00+00:00
+2025-11-20,employment_situation,Employment Situation (payrolls unemployment earnings),September 2025,08:30 AM ET,https://www.bls.gov/bls/2025-lapse-revised-release-dates.htm,2026-11-16T14:30:00+00:00
+2025-11-25,ppi,Producer Price Index,September 2025,08:30 AM ET,https://www.bls.gov/bls/2025-lapse-revised-release-dates.htm,2026-11-16T14:30:00+00:00
+2025-12-16,employment_situation,Employment Situation (payrolls unemployment earnings),November 2025,08:30 AM ET,https://www.bls.gov/bls/2025-lapse-revised-release-dates.htm,2026-11-16T14:30:00+00:00
+2025-12-18,core_cpi_mom,Consumer Price Index,November 2025,08:30 AM ET,https://www.bls.gov/bls/2025-lapse-revised-release-dates.htm,2026-11-16T14:30:00+00:00
+2026-01-09,employment_situation,Employment Situation (payrolls unemployment earnings),December 2025,08:30 AM ET,https://www.bls.gov/news.release/archives/empsit_01092026.htm,2026-11-16T14:30:00+00:00
+2026-01-13,core_cpi_mom,Consumer Price Index,December 2025,08:30 AM ET,https://www.bls.gov/news.release/archives/cpi_01132026.htm,2026-11-16T14:30:00+00:00
+2026-01-14,ppi,Producer Price Index,November 2025,08:30 AM ET,https://www.bls.gov/news.release/archives/ppi_01142026.htm,2026-11-16T14:30:00+00:00
+2026-01-30,ppi,Producer Price Index,December 2025,08:30 AM ET,https://www.bls.gov/news.release/archives/ppi_01302026.htm,2026-11-16T14:30:00+00:00
 2026-11-17,retail_sales_advance,Advance Monthly Sales for Retail and Food Services,October 2026,08:30 AM ET,https://www.census.gov/retail/release_schedule.html,2026-11-15T14:46:41+00:00
 2026-11-25,real_gdp_second,GDP (Second Estimate),3rd Quarter 2026,08:30 AM ET,https://www.bea.gov/news/schedule/,2026-11-15T14:46:41+00:00
 2026-12-04,employment_situation,Employment Situation (payrolls unemployment earnings),November 2026,08:30 AM ET,https://www.bls.gov/schedule/news_release/empsit.htm,2026-11-15T14:02:54+00:00

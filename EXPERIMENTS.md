@@ -67,3 +67,18 @@
 - Added all-series/selected-series CLI retrieval, full-batch validation before writes, immutable timestamped vintage snapshots, and a separate manifest containing the vintage date and data coverage.
 - Kept ALFRED snapshots separate from current-vintage FRED snapshots; the existing current-vintage fetcher is unchanged. Date-granular ALFRED snapshots do not encode the intraday order of a forecast and release on the same day.
 - Offline tests cover request construction, key handling, date validation, missing observations, API errors, atomic batch rejection, and manifest output. A live API fetch still requires the user's FRED API key.
+
+
+## 2026-11-15: Build Layer 2 event-day table
+- Added a deterministic source-linked event table from the verified scheduled-release calendar, first-release outcome ledger, and a manual unscheduled-news ledger.
+- Stored event IDs, UTC public timestamps, Eastern event dates, event type/reference period, actual first-release values, explicit CPI consensus values/surprises, and source-record links. Claims forecasts are preserved separately and are not labelled as consensus.
+- Added a news source-record schema with timezone-aware first-public timestamps, categories, severity, publisher/source URL, evidence note, and optional story cluster ID. No example headlines were inserted as research data.
+- Predefined overlap handling: retain rows and assign stable group IDs for events on the same Eastern date or within 60 minutes; exclude flagged records from single-event analysis while preserving them for possible grouped analysis.
+- Tests cover source linkage, first-release/consensus mapping, overlap flags and policy, invalid news timestamps/categories/severity, duplicate event IDs, and bad URLs.
+- Historical coverage: added 252 BLS CPI, PPI, and Employment Situation release events for 2019–2025 reference periods. Rows link to official BLS schedules or the revised-date/release archive source and retain the 08:30 a.m. Eastern time. Some December 2025 reference-period releases occurred in January 2026. During the 2025 appropriations lapse, BLS canceled the October CPI and Employment Situation releases and the October PPI release; October PPI values were included with the November PPI publication. Canceled reports are not represented as observed market-release events. Coverage for 2026 reference periods and other event families remains to be added.
+
+## 2026-11-15: Calculate descriptive daily event reactions
+- Added event-to-gold-session alignment and close-to-close return calculations for the event session and one-, three-, and five-session horizons, plus the event-session high-low range scaled by the prior close.
+- The event session is the first available daily bar dated on or after the Eastern event date; horizon periods count observed futures sessions. Overlapping records are retained with an explicit single-event ineligibility flag.
+- Upcoming events and events without adequate history receive status labels instead of fabricated values. The 2019–2025 historical BLS slice can now be joined to the available gold bars; it is a pipeline validation sample, not sufficient evidence for broad impact claims.
+- Interpretation limit: Yahoo `GC=F` daily bars support descriptive daily associations only. They cannot establish immediate intraday reactions or causal effects; contract roll moves also remain a data limitation.
