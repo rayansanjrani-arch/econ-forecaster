@@ -72,6 +72,11 @@ class ControlMatchingTests(unittest.TestCase):
         matches, summary = match_controls(self.reactions_path, self.sessions_path, "main", later)
         self.assertTrue(matches.empty and summary.empty)
 
+    def test_sample_end_limits_comparison_days(self):
+        end = self.dates[self.p + 2]
+        matches, _ = match_controls(self.reactions_path, self.sessions_path, "main", None, sample_end=end)
+        self.assertEqual(matches.session_distance.tolist(), [-5, -10, -15, -20, -25])
+
     def test_records_fewer_than_target_and_skips_missing_volatility(self):
         self.vol[self.p - 5] = ""
         self._write_sessions()

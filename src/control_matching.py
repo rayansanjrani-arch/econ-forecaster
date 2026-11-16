@@ -51,7 +51,7 @@ def _read_reactions(path):
 def match_controls(
     reactions_path, sessions_path, sample="main", sample_start=MAIN_SAMPLE_START,
     window=CONTROL_WINDOW_SESSIONS, per_event=CONTROLS_PER_EVENT,
-    buffer=CONTROL_EVENT_BUFFER_SESSIONS,
+    buffer=CONTROL_EVENT_BUFFER_SESSIONS, sample_end=None,
 ):
     """Return (matches, event_summary) for one sample definition.
 
@@ -66,6 +66,8 @@ def match_controls(
     in_sample = sessions["trailing_vol_pct"].ne("")
     if sample_start is not None:
         in_sample &= sessions["_date"] >= pd.Timestamp(sample_start)
+    if sample_end is not None:
+        in_sample &= sessions["_date"] <= pd.Timestamp(sample_end)
 
     release_positions = {
         position[d] for d in reactions["gold_event_session_date"] if d in position

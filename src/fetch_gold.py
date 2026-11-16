@@ -10,17 +10,17 @@ from zoneinfo import ZoneInfo
 
 import yfinance as yf
 
-from config import (GOLD_CROSSCHECK_FILE, GOLD_CROSSCHECK_TICKER, GOLD_HISTORY_FILE,
+from config import (GLD_LONG_START, GOLD_CROSSCHECK_FILE, GOLD_CROSSCHECK_TICKER, GOLD_GLD_LONG_FILE, GOLD_HISTORY_FILE,
                     GOLD_SOURCE_NAME, GOLD_SPIKE_THRESHOLD, GOLD_START_DATE,
                     GOLD_YAHOO_TICKER, NYSE_EXTRA_CLOSURES)
 from gold_data import drop_incomplete_sessions, inspect_gold_data, normalize_yahoo_gold
 
 
-def download(ticker, path, extra_closures=()):
+def download(ticker, path, extra_closures=(), start=GOLD_START_DATE):
     print(f"Downloading daily history for {ticker} from {GOLD_SOURCE_NAME}...")
     downloaded = yf.download(
         tickers=ticker,
-        start=GOLD_START_DATE,
+        start=start,
         interval="1d",
         auto_adjust=False,
         actions=False,
@@ -78,8 +78,12 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--crosscheck", action="store_true",
                         help=f"download the {GOLD_CROSSCHECK_TICKER} ETF cross-check instead of {GOLD_YAHOO_TICKER}")
+    parser.add_argument("--long-history", action="store_true",
+                        help=f"download {GOLD_CROSSCHECK_TICKER} from {GLD_LONG_START} to a separate file (replication)")
     args = parser.parse_args()
-    if args.crosscheck:
+    if args.long_history:
+        download(GOLD_CROSSCHECK_TICKER, GOLD_GLD_LONG_FILE, extra_closures=tuple(NYSE_EXTRA_CLOSURES), start=GLD_LONG_START)
+    elif args.crosscheck:
         download(GOLD_CROSSCHECK_TICKER, GOLD_CROSSCHECK_FILE, extra_closures=tuple(NYSE_EXTRA_CLOSURES))
     else:
         download(GOLD_YAHOO_TICKER, GOLD_HISTORY_FILE)

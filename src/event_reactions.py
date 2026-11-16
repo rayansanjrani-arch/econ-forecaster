@@ -21,6 +21,10 @@ REACTION_COLUMNS = [
     "return_5_sessions_pct", "gold_ticker", "gold_source",
 ]
 HORIZONS = (1, 3, 5)
+# An event is only aligned to a gold bar at most this many calendar days later
+# (covers weekends and holidays; prevents events before the gold history from
+# being attached to its first bar).
+MAX_ALIGNMENT_GAP_DAYS = 5
 # Saved floats are rounded so rebuilds on different machines/OSes give identical
 # files; 8 decimals is far below any meaningful price or percentage difference.
 OUTPUT_DECIMALS = 8
@@ -89,6 +93,10 @@ def calculate_event_reactions(event_table, gold_history):
         )
         if idx is None:
             base["analysis_status"] = "no_gold_session_on_or_after_event_date"
+            rows.append(base)
+            continue
+        if (session_dates[idx] - event_date).days > MAX_ALIGNMENT_GAP_DAYS:
+            base["analysis_status"] = "no_gold_session_near_event_date"
             rows.append(base)
             continue
         event_bar = gold.iloc[idx]

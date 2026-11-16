@@ -21,6 +21,11 @@ CPI_HISTORY_FILE = PROCESSED_DATA_DIR / "cpi_history.csv"
 PREDICTIONS_FILE = LOGS_DIR / "predictions.csv"
 GOLD_HISTORY_FILE = RAW_DATA_DIR / "gold_gc_futures_daily.csv"
 GOLD_CROSSCHECK_FILE = RAW_DATA_DIR / "gold_gld_etf_daily.csv"
+GOLD_GLD_LONG_FILE = RAW_DATA_DIR / "gold_gld_etf_daily_since_2004.csv"
+BLS_SCHEDULE_RAW_DIR = RAW_DATA_DIR / "bls" / "schedules"
+REPLICATION_DIR = REPORTS_DIR / "replication_2005_2018"
+REPLICATION_CALENDAR_FILE = PROCESSED_DATA_DIR / "release_calendar_2005_2018.csv"
+BLS_SCHEDULE_EXTRACT_DIR = RAW_DATA_DIR / "bls" / "schedule_extracts"
 GOLD_SOURCE_CHECK_FILE = REPORTS_DIR / "gold_source_check.csv"
 RELEASE_CALENDAR_FILE = PROCESSED_DATA_DIR / "release_calendar.csv"
 FIRST_RELEASE_OUTCOMES_FILE = PROCESSED_DATA_DIR / "first_release_outcomes.csv"
@@ -108,8 +113,18 @@ GOLD_SOURCE_NAME = "Yahoo Finance via yfinance"
 GOLD_CROSSCHECK_TICKER = "GLD"
 # Verified non-federal-holiday NYSE closures; add only with a source.
 NYSE_EXTRA_CLOSURES = {
+    "2007-01-02": "NYSE closed: national day of mourning for President Gerald Ford (NYSE Group notice, 2006-12-29)",
+    "2012-10-29": "NYSE closed: Hurricane Sandy (NYSE Euronext notice, 2012-10-28)",
+    "2012-10-30": "NYSE closed: Hurricane Sandy, second day (NYSE statement, 2012-10-29)",
+    "2018-12-05": "NYSE closed: national day of mourning for President George H. W. Bush (ICE/NYSE notice, 2018-12-01)",
     "2025-01-09": "NYSE closed: national day of mourning for President Jimmy Carter",
 }
+# Replication (declared in EXPERIMENTS.md before pre-2019 data was collected)
+GLD_LONG_START = "2004-11-18"  # GLD listing date
+REPLICATION_START = "2005-01-01"
+REPLICATION_END = "2018-12-31"
+BLS_SCHEDULE_YEARS = range(2005, 2019)
+BLS_SCHEDULE_URL = "https://www.bls.gov/schedule/{year}/home.htm"
 GOLD_SOURCE_DIFF_FLAG_PCT = 1.5  # daily return difference (percentage points) flagged for review
 GOLD_START_DATE = "2019-01-01"
 GOLD_SPIKE_THRESHOLD = 0.05

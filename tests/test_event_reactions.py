@@ -65,6 +65,16 @@ class EventReactionTests(unittest.TestCase):
         self.assertEqual(row.analysis_status, "no_gold_session_on_or_after_event_date")
         self.assertEqual(row.event_session_return_pct, "")
 
+    def test_event_before_gold_history_is_not_attached_to_first_bar(self):
+        events = pd.read_csv(self.events_path)
+        events.loc[len(events)] = ["event-old", "scheduled", "cpi", "cpi", "Old", "2025-06-10T12:30:00+00:00",
+                                   "2025-06-10", False, "", "eligible_for_single_event_analysis"]
+        events.to_csv(self.events_path, index=False)
+        result = calculate_event_reactions(self.events_path, self.gold_path)
+        row = result.loc[result.event_id == "event-old"].iloc[0]
+        self.assertEqual(row.analysis_status, "no_gold_session_near_event_date")
+        self.assertEqual(row.gold_event_session_date, "")
+
     def test_rejects_duplicate_gold_sessions(self):
         gold = pd.read_csv(self.gold_path)
         gold = pd.concat([gold, gold.iloc[[0]]], ignore_index=True)

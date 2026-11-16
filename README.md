@@ -83,6 +83,12 @@ Run `python src/build_session_outcomes.py` to write `data/processed/gold_session
 
 Then run `python src/build_event_controls.py` to write `data/processed/event_control_matches.csv`. Each usable, non-overlapping release event is matched to up to five ordinary sessions on the same weekday within 30 sessions, excluding release days and the sessions next to them; the nearest sessions are chosen, earlier date first on ties. The calendar does not yet mark historical FOMC, GDP, retail-sales or weekly claims days, so some comparison days are other release days. The matching rules are recorded in `EXPERIMENTS.md`.
 
+### Layer 2: Task 2.3.4 uncertainty and 2005-2018 replication
+
+`python src/bootstrap_event_days.py` adds 95% event-bootstrap intervals (2,000 resamples, fixed seed) to the release-versus-ordinary comparison and applies the pre-declared rule: median scaled-move ratio at least 1.25 with an interval lower end above 1.0. Output: `reports/event_vs_ordinary_uncertainty.csv`.
+
+The replication uses data not examined when the pattern was found. `python src/fetch_gold.py --long-history` downloads GLD from November 2004 to a separate file. `python src/build_replication_calendar.py` parses the verbatim BLS schedule extracts in `data/raw/bls/schedule_extracts/` into `data/processed/release_calendar_2005_2018.csv`. `python src/run_replication.py` then repeats Tasks 2.2-2.3.4 with unchanged rules for 2005-2018 and its 2005-2011 and 2012-2018 halves, writing to `reports/replication_2005_2018/`. Results and decisions are recorded in `EXPERIMENTS.md`.
+
 After a forecast has been logged and the agency publishes its first release, record the reported value and source. Outcomes are stored separately in append-only `data/processed/first_release_outcomes.csv`; `score.py` joins them to predictions without editing forecast records. Duplicate outcomes and outcomes without a matching forecast are rejected.
 
 ```powershell

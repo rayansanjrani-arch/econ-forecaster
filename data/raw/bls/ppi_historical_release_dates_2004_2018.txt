@@ -1,0 +1,17 @@
+# Source: https://www.bls.gov/ppi/news-release/historical-release-dates-for-the-producer-price-index.pdf (fetched 2026-11-16)
+# Columns: reference year | release dates for reference months January..December (footnote markers kept)
+2004 | February 19 (2) | March 12 (3) | April 8 (4) | May 13 | June 11 (5) | July 15 | August 13 | September 10 | October 15 | November 16 | December 10 | January 14, 2005
+2005 | February 18 | March 22 | April 19 | May 17 | June 14 | July 15 | August 17 | September 13 | October 18 | November 15 | December 20 | January 13, 2006
+2006 | February 17 | March 21 | April 18 | May 16 | June 13 | July 18 | August 15 | September 19 | October 17 | November 14 | December 19 | January 17, 2007
+2007 | February 16 | March 15 | April 13 | May 11 | June 14 | July 17 | August 14 | September 18 | October 12 | November 14 | December 13 | January 15, 2008
+2008 | February 26 | March 18 | April 15 | May 20 | June 17 | July 15 | August 19 | September 12 | October 15 | November 18 | December 12 | January 15, 2009
+2009 | February 19 | March 17 | April 14 | May 14 | June 16 | July 14 | August 18 | September 15 | October 20 | November 17 | December 15 | January 20, 2010
+2010 | February 18 | March 17 | April 22 | May 18 | June 16 | July 15 | August 17 | September 16 | October 14 | November 16 | December 14 | January 13, 2011
+2011 | February 16 | March 16 | April 14 | May 12 | June 14 | July 14 | August 17 | September 14 | October 18 | November 15 | December 15 | January 18, 2012
+2012 | February 16 | March 15 | April 12 | May 11 | June 13 | July 13 | August 14 | September 13 | October 12 | November 14 | December 13 | January 15, 2013
+2013 | February 20 | March 14 | April 12 | May 15 | June 14 | July 12 | August 14 | September 13 | October 11 (6) | November 14 (7) | December 13 | January 15, 2014
+2014 | February 19 | March 14 | April 11 | May 14 | June 13 | July 16 | August 15 | September 16 | October 15 | November 18 | December 12 | January 15, 2015
+2015 | February 18 | March 13 | April 14 | May 14 | June 12 | July 15 | August 14 | September 11 | October 14 | November 13 | December 11 | January 15, 2016
+2016 | February 17 | March 15 | April 13 | May 13 | June 15 | July 14 | August 12 | September 15 | October 14 | November 16 | December 14 | January 13, 2017
+2017 | February 14 | March 14 | April 13 | May 11 | June 13 | July 13 | August 10 | September 13 | October 12 | November 14 | December 12 | January 11, 2018
+2018 | February 15 | March 14 | April 10 | May 09 | June 13 | July 11 | August 09 | September 12 | October 10 | November 09 | December 11 | January 15, 2019

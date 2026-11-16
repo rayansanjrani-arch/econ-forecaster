@@ -7,3 +7,8 @@ __pycache__/
 *.tmp
 data/raw/*
 !data/raw/.gitkeep
+# Keep the small verbatim BLS source extracts behind the 2005-2018 calendar
+!data/raw/bls/
+data/raw/bls/*
+!data/raw/bls/schedule_extracts/
+!data/raw/bls/ppi_historical_release_dates_2004_2018.txt
