@@ -57,7 +57,20 @@ def normalize_yahoo_gold(data, ticker, source, downloaded_at_utc):
     return normalized[["date", *PRICE_COLUMNS, "volume", "ticker", "source", "downloaded_at_utc"]]
 
 
-def inspect_gold_data(frame, spike_threshold=0.05):
+def drop_incomplete_sessions(frame, today_new_york):
+    """Drop bars dated on or after today's New York date.
+
+    A bar for the current day can be a partial, still-trading session (both the
+    NYSE-listed ETF and the near-24-hour futures). Conservative: a completed
+    bar downloaded after the close is also dropped and arrives with the next refresh.
+    """
+    cutoff = pd.Timestamp(today_new_york).normalize()
+    dates = pd.to_datetime(frame["date"], errors="coerce")
+    keep = dates < cutoff
+    return frame.loc[keep].reset_index(drop=True), frame.loc[~keep, "date"].tolist()
+
+
+def inspect_gold_data(frame, spike_threshold=0.05, extra_closures=()):
     """Check OHLC consistency and report candidate weekday gaps and large moves."""
     errors = []
     missing_columns = [column for column in REQUIRED_COLUMNS if column not in frame.columns]
@@ -104,7 +117,8 @@ def inspect_gold_data(frame, spike_threshold=0.05):
             USFederalHolidayCalendar().holidays(observed.min(), observed.max()).normalize()
         )
         good_fridays = set(GoodFriday.dates(observed.min(), observed.max()).normalize())
-        recognized_closures = federal_holidays | good_fridays
+        extra = set(pd.to_datetime(list(extra_closures)).normalize())
+        recognized_closures = federal_holidays | good_fridays | extra
         unexpected_weekdays = [
             date.strftime("%Y-%m-%d") for date in missing_dates if date not in recognized_closures
         ]

@@ -20,6 +20,8 @@ REPORTS_DIR = PROJECT_ROOT / "reports"
 CPI_HISTORY_FILE = PROCESSED_DATA_DIR / "cpi_history.csv"
 PREDICTIONS_FILE = LOGS_DIR / "predictions.csv"
 GOLD_HISTORY_FILE = RAW_DATA_DIR / "gold_gc_futures_daily.csv"
+GOLD_CROSSCHECK_FILE = RAW_DATA_DIR / "gold_gld_etf_daily.csv"
+GOLD_SOURCE_CHECK_FILE = REPORTS_DIR / "gold_source_check.csv"
 RELEASE_CALENDAR_FILE = PROCESSED_DATA_DIR / "release_calendar.csv"
 FIRST_RELEASE_OUTCOMES_FILE = PROCESSED_DATA_DIR / "first_release_outcomes.csv"
 NEWS_EVENTS_FILE = PROCESSED_DATA_DIR / "news_events.csv"
@@ -101,6 +103,13 @@ FRED_SERIES_CATALOG = {
 }
 GOLD_YAHOO_TICKER = "GC=F"
 GOLD_SOURCE_NAME = "Yahoo Finance via yfinance"
+# Task 1.1a cross-check: SPDR Gold Shares ETF (NYSE hours, no futures rolls, no dividends)
+GOLD_CROSSCHECK_TICKER = "GLD"
+# Verified non-federal-holiday NYSE closures; add only with a source.
+NYSE_EXTRA_CLOSURES = {
+    "2025-01-09": "NYSE closed: national day of mourning for President Jimmy Carter",
+}
+GOLD_SOURCE_DIFF_FLAG_PCT = 1.5  # daily return difference (percentage points) flagged for review
 GOLD_START_DATE = "2019-01-01"
 GOLD_SPIKE_THRESHOLD = 0.05
 GOLD_TRAILING_VOL_WINDOW = 20  # Task 2.3.1: prior sessions, current excluded
