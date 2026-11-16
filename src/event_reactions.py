@@ -21,6 +21,14 @@ REACTION_COLUMNS = [
     "return_5_sessions_pct", "gold_ticker", "gold_source",
 ]
 HORIZONS = (1, 3, 5)
+# Saved floats are rounded so rebuilds on different machines/OSes give identical
+# files; 8 decimals is far below any meaningful price or percentage difference.
+OUTPUT_DECIMALS = 8
+NUMERIC_OUTPUT_COLUMNS = [
+    "prior_close", "event_session_close", "event_session_return_pct",
+    "event_session_range_pct", "return_1_sessions_pct", "return_3_sessions_pct",
+    "return_5_sessions_pct",
+]
 
 
 def _read_event_table(source):
@@ -121,5 +129,9 @@ def calculate_event_reactions(event_table, gold_history):
 def save_event_reactions(frame, path=EVENT_REACTIONS_FILE):
     path = Path(path)
     path.parent.mkdir(parents=True, exist_ok=True)
-    frame[REACTION_COLUMNS].to_csv(path, index=False)
+    output = frame[REACTION_COLUMNS].copy()
+    for column in NUMERIC_OUTPUT_COLUMNS:
+        values = pd.to_numeric(output[column], errors="coerce").round(OUTPUT_DECIMALS)
+        output[column] = values.astype(object).where(values.notna(), "")
+    output.to_csv(path, index=False)
     return path

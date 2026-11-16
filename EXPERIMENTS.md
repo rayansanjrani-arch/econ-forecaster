@@ -82,3 +82,24 @@
 - The event session is the first available daily bar dated on or after the Eastern event date; horizon periods count observed futures sessions. Overlapping records are retained with an explicit single-event ineligibility flag.
 - Upcoming events and events without adequate history receive status labels instead of fabricated values. The 2019–2025 historical BLS slice can now be joined to the available gold bars; it is a pipeline validation sample, not sufficient evidence for broad impact claims.
 - Interpretation limit: Yahoo `GC=F` daily bars support descriptive daily associations only. They cannot establish immediate intraday reactions or causal effects; contract roll moves also remain a data limitation.
+
+## 2026-11-16: Reproducibility and pandas-compatibility fixes
+- Observation: rebuilding `event_reactions.csv` on a different OS produced last-digit floating-point differences (e.g. `...6325` vs `...6103`) with no real data change, creating noisy diffs.
+- Change: saved reaction prices and percentages are rounded to 8 decimals; blank cells for events without gold sessions stay blank. Values and counts are unchanged (327 rows, 252 usable, 323 single-event eligible).
+- Change: appending the first row to an empty prediction log or outcome ledger no longer calls `pd.concat` with an empty frame, which raised a pandas FutureWarning about future dtype behaviour.
+- Validation: 44 unit tests pass with FutureWarnings treated as errors; a new test checks rounding and blank preservation.
+
+## 2026-11-16: Task 2.3.1 plan — daily gold outcome measures (declared before results)
+- Question: define the move measures used to compare release days with ordinary days, calculated identically for every gold session.
+- Input: `data/raw/gold_gc_futures_daily.csv` (Yahoo `GC=F` futures, 2019 onward). Output: `data/processed/gold_session_outcomes.csv`, one row per session.
+- Measures: signed close-to-close return % from the prior observed session; absolute return %; high-low range as % of prior close (same definition as Task 2.2); trailing volatility = sample standard deviation (ddof=1) of the previous 20 session returns, excluding the current session; scaled move = absolute return / trailing volatility.
+- Rules: all 20 prior returns must exist, otherwise trailing volatility and scaled move stay blank and the row is flagged `insufficient_history`. Returns span holiday gaps as observed sessions, as in Task 2.2. Moves above 5% are flagged for review and kept, not removed.
+- Fixed now, tested later as separate one-factor checks: the 20-session window (60-session sensitivity deferred).
+- Acceptance checks: hand-checkable fixture values; changing a session's own close does not change its trailing volatility (no look-ahead); for usable release events, returns and ranges match `event_reactions.csv`; full test suite passes.
+
+## 2026-11-16: Task 2.3.1 result — daily gold outcome measures built
+- Output: `data/processed/gold_session_outcomes.csv`, 1,982 sessions (2019-01-02 to 2026-11-13); 1,961 have a 20-session trailing volatility (first: 2019-02-01). Built by `python src/build_session_outcomes.py`.
+- Acceptance checks passed: hand-checked fixture; no look-ahead in trailing volatility; all 252 usable Task 2.2 events match this table exactly (return and range differences 0, same prior session); 52 unit tests pass.
+- Inspection: median absolute daily move 0.57%, median range 1.35%, median trailing volatility 0.95%. Six moves above 5% remain flagged (largest -10.78% on 2026-01-30). Three January 2019 events lack trailing volatility because history starts 2019-01-02.
+- Data-quality finding: Yahoo `GC=F` volume is very low from January 2019 to May 2020 (224 of 252 sessions in 2019 and 86 in early 2020 under 1,000 contracts; median volume from June 2020 is roughly 190,000). That period also has 30 flat high=low bars. These bars probably do not track the active contract, so their ranges and possibly closes are unreliable. 51 of the 252 usable events fall on thin-volume sessions.
+- Decision: added review flags `thin_volume_flag` (volume under 1,000) and `flat_bar_flag`; no rows removed or adjusted. Whether the Task 2.3 comparison sample starts on 2020-06-01 must be declared in the Task 2.3.2 plan before any comparison is calculated.

@@ -25,6 +25,7 @@ FIRST_RELEASE_OUTCOMES_FILE = PROCESSED_DATA_DIR / "first_release_outcomes.csv"
 NEWS_EVENTS_FILE = PROCESSED_DATA_DIR / "news_events.csv"
 EVENT_DAY_TABLE_FILE = PROCESSED_DATA_DIR / "event_day_table.csv"
 EVENT_REACTIONS_FILE = PROCESSED_DATA_DIR / "event_reactions.csv"
+GOLD_SESSION_OUTCOMES_FILE = PROCESSED_DATA_DIR / "gold_session_outcomes.csv"
 
 FRED_GRAPH_URL = "https://fred.stlouisfed.org/graph/fredgraph.csv"
 CLAIMS_SERIES = "ICSA"
@@ -100,6 +101,8 @@ GOLD_YAHOO_TICKER = "GC=F"
 GOLD_SOURCE_NAME = "Yahoo Finance via yfinance"
 GOLD_START_DATE = "2019-01-01"
 GOLD_SPIKE_THRESHOLD = 0.05
+GOLD_TRAILING_VOL_WINDOW = 20  # Task 2.3.1: prior sessions, current excluded
+GOLD_THIN_VOLUME_THRESHOLD = 1_000  # contracts/day; review flag, not an exclusion
 
 CLAIMS_BAND = 3_000
 CLAIMS_FORECAST_WINDOW = 4

@@ -110,7 +110,9 @@ def _record(release, indicator, actual, forecast, threshold, outcome, source, so
         "source_url": str(source_url).strip(),
         "recorded_at_utc": recorded_at_utc or pd.Timestamp.now(tz="UTC").isoformat(),
     }
-    updated = pd.concat([previous, pd.DataFrame([record], columns=OUTCOME_COLUMNS)], ignore_index=True)
+    new_row = pd.DataFrame([record], columns=OUTCOME_COLUMNS)
+    # Skip concat for an empty ledger: pandas is changing how empty frames affect dtypes.
+    updated = new_row if previous.empty else pd.concat([previous, new_row], ignore_index=True)
     outcome_path.parent.mkdir(parents=True, exist_ok=True)
     temp_path = outcome_path.with_name(outcome_path.name + ".tmp")
     updated.to_csv(temp_path, index=False)

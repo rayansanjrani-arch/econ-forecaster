@@ -6,7 +6,7 @@ from pathlib import Path
 import pandas as pd
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
-from event_reactions import REACTION_COLUMNS, calculate_event_reactions
+from event_reactions import REACTION_COLUMNS, calculate_event_reactions, save_event_reactions
 
 
 EVENT_COLUMNS = [
@@ -71,6 +71,17 @@ class EventReactionTests(unittest.TestCase):
         gold.to_csv(self.gold_path, index=False)
         with self.assertRaisesRegex(ValueError, "unique"):
             calculate_event_reactions(self.events_path, self.gold_path)
+
+
+    def test_saved_output_rounds_float_noise_and_keeps_blanks(self):
+        result = calculate_event_reactions(self.events_path, self.gold_path)
+        result.loc[result.event_id == "event-a", "event_session_return_pct"] = 2.0000000000000036
+        out = save_event_reactions(result, Path(self.temp.name) / "out.csv")
+        saved = pd.read_csv(out, dtype=str, keep_default_na=False)
+        row = saved.loc[saved.event_id == "event-a"].iloc[0]
+        self.assertEqual(row.event_session_return_pct, "2.0")
+        future = saved.loc[saved.event_id == "event-future"].iloc[0]
+        self.assertEqual(future.event_session_return_pct, "")
 
 
 if __name__ == "__main__":

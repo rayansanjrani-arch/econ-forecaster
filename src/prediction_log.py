@@ -63,7 +63,9 @@ def append_prediction(row, path=LOG_PATH):
     existing_keys = set(zip(frame["release"].astype(str), frame["indicator"].astype(str)))
     if key in existing_keys:
         raise ValueError(f"A prediction already exists for {key[1]} on {key[0]}")
-    updated = pd.concat([frame, pd.DataFrame([record], columns=LOG_COLUMNS)], ignore_index=True)
+    new_row = pd.DataFrame([record], columns=LOG_COLUMNS)
+    # Skip concat for an empty log: pandas is changing how empty frames affect dtypes.
+    updated = new_row if frame.empty else pd.concat([frame, new_row], ignore_index=True)
     temp_path = path.with_name(path.name + ".tmp")
     updated.to_csv(temp_path, index=False)
     os.replace(temp_path, path)
