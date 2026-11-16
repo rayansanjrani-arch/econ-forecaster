@@ -30,6 +30,7 @@ EVENT_REACTIONS_FILE = PROCESSED_DATA_DIR / "event_reactions.csv"
 GOLD_SESSION_OUTCOMES_FILE = PROCESSED_DATA_DIR / "gold_session_outcomes.csv"
 EVENT_CONTROL_MATCHES_FILE = PROCESSED_DATA_DIR / "event_control_matches.csv"
 EVENT_COMPARISON_FILE = REPORTS_DIR / "event_vs_ordinary_summary.csv"
+EVENT_UNCERTAINTY_FILE = REPORTS_DIR / "event_vs_ordinary_uncertainty.csv"
 
 FRED_GRAPH_URL = "https://fred.stlouisfed.org/graph/fredgraph.csv"
 CLAIMS_SERIES = "ICSA"
@@ -119,6 +120,10 @@ MAIN_SAMPLE_START = "2020-06-01"  # after the thin-volume GC=F period
 CONTROL_WINDOW_SESSIONS = 30
 CONTROLS_PER_EVENT = 5
 CONTROL_EVENT_BUFFER_SESSIONS = 1
+# Task 2.3.4 event-cluster bootstrap (declared in EXPERIMENTS.md before results)
+BOOTSTRAP_RESAMPLES = 2_000
+BOOTSTRAP_SEED = 20261116
+PRACTICAL_MARGIN_RATIO = 1.25
 
 CLAIMS_BAND = 3_000
 CLAIMS_FORECAST_WINDOW = 4
