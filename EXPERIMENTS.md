@@ -206,3 +206,37 @@
 - Declared stability split: 2005-2011 Employment Situation 0.956 [0.760, 1.279] (no sign of an effect); 2012-2018 1.429 [1.043, 1.955] (passes the rule). Secondary upper-percentile ratios follow the same split (2012-2018 p75 1.485 [1.098, 1.827], p90 1.702 [1.126, 2.155]; 2005-2011 below 1).
 - Interpretation: the jobs-report pattern appears in 2012-2018 and 2020-2026 but not in 2005-2011, so it is not a stable property of the whole sample. One untested explanation is that gold's sensitivity to labour data depends on the macro and policy regime (for example the 2008-2011 crisis period). This is a hypothesis for Layer 6, not a finding.
 - Layer 2 decision for the Employment Situation effect: "not established — time-varying". CPI and PPI: no practically meaningful release-day effect in any period. Pooled release days show a small but consistent increase in typical move size (about 14% over 2005-2018), below the declared practical margin.
+
+## 2026-11-16: Layer 2 decision gate — gold reaction to CPI, PPI and Employment Situation releases
+**Question and population.** Do daily gold moves on scheduled BLS CPI, PPI and Employment Situation release days (8:30 a.m. ET) differ from matched ordinary days? Population: every release with a usable daily gold bar; no unscheduled news (the news ledger is still empty).
+
+**Baseline and primary score (declared before results).** Baseline: up to five ordinary sessions on the same weekday within 30 sessions, excluding release days and their neighbours. Primary score: release/ordinary ratio of the median scaled move (absolute close-to-close return divided by trailing 20-session volatility), with a 95% event-cluster bootstrap interval (2,000 resamples, seed 20261116).
+
+**Windows and data handling.** Discovery window from 2020-06-01 on GC=F futures, with GLD as a sensitivity check. Replication window 2005-2018 on GLD, not examined before its rules were declared, plus 2005-2011 and 2012-2018 halves. Releases use first-publication dates, including shutdown-delayed dates; cancelled 2025 releases are not represented. Overlapping events are kept but excluded from single-event estimates (no historical overlaps occurred). Missing sessions are handled as observed-session returns. Large moves are flagged, never removed. Revisions do not affect this layer, which uses release timing, not values.
+
+**Minimum practical improvement.** Ratio of at least 1.25 with an interval lower end above 1.0. Significance alone does not count.
+
+**Results (median scaled-move ratio [95% interval]; 67 events per type in discovery, 84 per half and 168 in replication):**
+
+| Release | GC=F 2020-26 | GLD 2020-26 | GLD 2005-18 | GLD 2005-11 | GLD 2012-18 |
+|---|---|---|---|---|---|
+| Employment Situation | 1.58 [0.90, 2.19] | 1.56 [0.86, 2.15] | 1.24 [0.93, 1.44] | 0.96 [0.76, 1.28] | 1.43 [1.04, 1.95] |
+| CPI | 0.97 [0.51, 1.49] | 0.96 [0.69, 1.52] | 1.19 [0.99, 1.47] | 1.19 [0.95, 1.55] | 1.23 [0.90, 1.68] |
+| PPI | 1.20 [0.79, 1.61] | 1.06 [0.89, 1.46] | 1.05 [0.78, 1.28] | 1.10 [0.73, 1.38] | 0.96 [0.67, 1.35] |
+| All three | 1.18 [0.92, 1.51] | 1.10 [0.93, 1.47] | 1.14 [1.02, 1.28] | 1.08 [0.90, 1.25] | 1.20 [1.01, 1.43] |
+
+**Task outcomes.**
+- 2.1-2.3: done.
+- 2.3.5: done. Fixture tests cover hand-checked values, missing sessions, overlap groups, sample boundaries and reproducible seeds; outputs were inspected at each step.
+- 2.4 impact ranking: closed with a negative result. Every comparison already controls for pre-event volatility through the scaled move, but the ordering is unstable between windows (Employment Situation is largest in 2012-2018 and 2020-2026, CPI in 2005-2011), so no ranking is reported. Story clustering is not applicable without news data.
+- 2.5 surprise and direction: deferred. It needs contemporaneous consensus histories (Task 1.5); only one consensus observation exists. Unconditionally, release days show no directional tendency (share of up days similar to ordinary days).
+
+**Decision.**
+- Do not integrate any release-day effect into the forecasting system.
+- Employment Situation: "not established — time-varying"; it fails the declared replication over 2005-2018 and is absent in 2005-2011.
+- CPI and PPI: no practically meaningful effect in any window.
+- Carried forward as hypotheses, not findings:
+  - Layer 3: test a release-day indicator out of sample as a volatility-forecast feature. The pooled ratio of about 1.14 has an interval excluding 1 over 2005-2018, but it is below the practical margin.
+  - Layer 6: test whether the Employment Situation effect depends on the macro or policy regime.
+  - Before FOMC events are studied, handle the 2:00 p.m. timing issue (GC=F daily close falls before the decision).
+- Layer 2 is complete as a descriptive study.
