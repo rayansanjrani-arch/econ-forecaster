@@ -26,6 +26,7 @@ NEWS_EVENTS_FILE = PROCESSED_DATA_DIR / "news_events.csv"
 EVENT_DAY_TABLE_FILE = PROCESSED_DATA_DIR / "event_day_table.csv"
 EVENT_REACTIONS_FILE = PROCESSED_DATA_DIR / "event_reactions.csv"
 GOLD_SESSION_OUTCOMES_FILE = PROCESSED_DATA_DIR / "gold_session_outcomes.csv"
+EVENT_CONTROL_MATCHES_FILE = PROCESSED_DATA_DIR / "event_control_matches.csv"
 
 FRED_GRAPH_URL = "https://fred.stlouisfed.org/graph/fredgraph.csv"
 CLAIMS_SERIES = "ICSA"
@@ -103,6 +104,11 @@ GOLD_START_DATE = "2019-01-01"
 GOLD_SPIKE_THRESHOLD = 0.05
 GOLD_TRAILING_VOL_WINDOW = 20  # Task 2.3.1: prior sessions, current excluded
 GOLD_THIN_VOLUME_THRESHOLD = 1_000  # contracts/day; review flag, not an exclusion
+# Task 2.3.2 matched comparison days (declared in EXPERIMENTS.md before results)
+MAIN_SAMPLE_START = "2020-06-01"  # after the thin-volume GC=F period
+CONTROL_WINDOW_SESSIONS = 30
+CONTROLS_PER_EVENT = 5
+CONTROL_EVENT_BUFFER_SESSIONS = 1
 
 CLAIMS_BAND = 3_000
 CLAIMS_FORECAST_WINDOW = 4
