@@ -272,3 +272,17 @@
 - Full-period mean QLIKE, h = 1: EWMA 1.075, HV60 1.116, HV20 1.124. h = 5: EWMA 2.711, HV60 2.753, HV20 2.760. MSE gives the same order (h = 1: 14.84 vs 15.16 and 15.21).
 - EWMA beats HV20 in 5/5 windows at both horizons (block-bootstrap mean QLIKE difference h = 1: -0.050 [-0.068, -0.033]). It beats HV60 in 4/5, losing only the calm W3 2016-2019 (0.410 vs 0.395), with h = 1 difference -0.042 [-0.079, -0.012]. EWMA would itself pass the keep rule against either historical-volatility baseline.
 - Decision: EWMA (lambda 0.94) is the best baseline for both horizons. GARCH(1,1) and any later model must beat EWMA under the Task 3.1 keep rule. A fast-reacting estimator wins in turbulent windows; a slow one does slightly better in the calm window.
+
+## 2026-11-17: Task 3.3 plan — GARCH(1,1) against EWMA (declared before results)
+- Model: zero-mean GARCH(1,1) with normal quasi-likelihood: variance(t+1) = omega + alpha × return(t)² + beta × variance(t). Fitted with the `arch` package (added to requirements, chosen 2026-11-17 over a hand-written optimiser).
+- Walk-forward: the first fit uses all returns up to the first 2008 origin; refits every 21 sessions on an expanding window using returns up to the refit origin only. Between refits the parameters are held fixed and the variance recursion runs on returns up to each origin. The recursion starts from the mean of the first 75 squared returns, close to the package's own start-up value; its effect is gone long before 2008.
+- Five-session forecast: the GARCH multi-step forecast, summed over sessions t+1 to t+5 (variance(t+k+1) = omega + (alpha + beta) × variance(t+k)). This is not 5 × the one-step forecast.
+- Fit problems: if the optimiser reports non-convergence, the previous parameters are kept and the event is counted and reported.
+- Test: per horizon, GARCH against EWMA with the Task 3.1 keep rule (better mean QLIKE in at least 4 of 5 windows, and a block-bootstrap interval of the mean QLIKE difference entirely below 0). MSE reported as secondary.
+
+## 2026-11-17: Task 3.3 result — GARCH(1,1) passes the keep rule against EWMA at both horizons
+- Run on the project environment (Python 3.14, arch 9.0.0, scipy 1.18.1): `python src/run_vol_garch.py`; outputs `reports/volatility/garch_forecasts.csv`, `garch_fit_log.csv`, `garch_vs_ewma.csv`. 97 tests pass, including the arch fit test (recovers simulated parameters).
+- 227 walk-forward refits from 2008-01-02, all converged. Parameters are stable: alpha 0.042-0.066, beta 0.926-0.957. Latest fit: omega 0.0133, alpha 0.0601, beta 0.9312 (persistence 0.991).
+- h = 1: GARCH has the lower mean QLIKE in 5/5 windows. Full-period difference (GARCH minus EWMA) -0.0126 [-0.0237, -0.0023] → kept. MSE 14.799 vs 14.836.
+- h = 5: GARCH wins 4/5 windows; it loses calm W3 2016-2019 (2.0164 vs 2.0142). Difference -0.0169 [-0.0337, -0.0030] → kept. MSE 98.24 vs 99.56.
+- Interpretation: the gain is small but consistent across regimes. GARCH differs from EWMA mainly by mean reversion towards a long-run variance (EWMA's implied persistence is 1.0, GARCH's is about 0.99), which matters more at the 5-session horizon. GARCH(1,1) becomes the model to beat for Tasks 3.4-3.5.
