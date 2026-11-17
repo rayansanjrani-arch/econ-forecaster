@@ -315,3 +315,40 @@
 - GARCH-normal is worse than FHS everywhere except W5 and wins only 3/5 windows against climatology on Brier. It puts too little probability on small moves (forecast 38.0% vs observed 45.1% below 0.5%) and too much on 1-2% (25.3% vs 20.6%). Gold's daily returns are more peaked and fat-tailed than normal; the empirical |z| distribution handles both.
 - Calibration (FHS, full period, mean forecast vs observed): below 0.5% 0.441 vs 0.451; 0.5-1% 0.270 vs 0.268; 1-2% 0.209 vs 0.206; 2% or more 0.080 vs 0.075. In reliability bins with at least 50 forecasts the gaps are mostly 0.01-0.03. The largest is in the 2%-or-more range at forecast 0.30-0.40 (0.337 forecast vs 0.237 observed, n = 59), where large-move probabilities run somewhat high in the most turbulent periods.
 - Decision: keep GARCH(1,1) + filtered historical simulation as the Layer 3 move-range forecaster.
+
+## 2026-11-17: Layer 3 decision gate — gold volatility and move-range forecasting
+**Question and population.** At each close, forecast the variance of the next 1 and 5 GLD sessions and the probability of the next session's absolute move falling in four declared ranges (below 0.5%, 0.5-1%, 1-2%, 2% or more). Population: every GLD session from 2008-01-02 to November 2026; 2004-11 to 2007 is burn-in only.
+
+**Baselines and primary scores (declared before results).**
+- Variance: 20-day and 60-day historical volatility and EWMA (lambda 0.94); the best by full-period QLIKE is the bar.
+- Probabilities: expanding-window climatology.
+- Primary scores: QLIKE (variance) and the multi-category Brier score (probabilities). Secondary: MSE and log loss.
+
+**Windows and data handling.**
+- Five chronological windows: 2008-11, 2012-15, 2016-19, 2020-23, 2024-26.
+- Walk-forward forecasts from the origin close only; parameters refit every 21 sessions on an expanding window.
+- Release dates come only from calendars published in advance; returns are between observed sessions; no outliers removed.
+- Price revisions do not apply to market data.
+
+**Minimum improvement (keep rule).** Better mean score than the bar in at least 4 of 5 windows, and a 21-session moving-block bootstrap 95% interval of the full-period mean difference entirely below 0.
+
+**Results.**
+
+| Step | Comparison | Windows won | Mean difference [95%] | Verdict |
+|---|---|---|---|---|
+| 3.2 | EWMA vs HV20 / HV60 (QLIKE, h = 1) | 5/5, 4/5 | -0.050 [-0.068, -0.033] / -0.042 [-0.079, -0.012] | EWMA is the bar |
+| 3.3 | GARCH(1,1) vs EWMA, h = 1 | 5/5 | -0.0126 [-0.0237, -0.0023] | kept |
+| 3.3 | GARCH(1,1) vs EWMA, h = 5 | 4/5 | -0.0169 [-0.0337, -0.0030] | kept |
+| 3.4 | GARCH + release days vs GARCH, h = 1 | 3/5 | -0.0017 [-0.0062, 0.0019] | not kept |
+| 3.4 | GARCH + release days vs GARCH, h = 5 | 4/5 | -0.0007 [-0.0035, 0.0016] | not kept |
+| 3.5 | GARCH-FHS vs climatology (Brier) | 5/5 | -0.0217 [-0.0275, -0.0162] | kept |
+| 3.5 | GARCH-normal vs climatology (Brier, secondary) | 3/5 | -0.0127 [-0.0186, -0.0067] | not kept |
+
+**Calibration of the kept forecaster.** Mean forecast vs observed: 0.441/0.451, 0.270/0.268, 0.209/0.206, 0.080/0.075. One known weakness: 2%-or-more probabilities of 0.30-0.40 occurred 24% of the time (n = 59).
+
+**Not done.** The Task 3.1 plan named GC=F from 2020-06 as a secondary check on the recent window. It was not run. GC=F history is reliable only from mid-2020, which leaves too little expanding-window training before the one remaining evaluation window to be informative, and the walk-forward GARCH fit requires `arch` on the project machine. GLD and GC=F daily returns correlate 0.91 (5-session 0.975, Task 1.1a). The check stays open and would be run if GC=F becomes the primary series.
+
+**Decision.**
+- Layer 3's forecaster is walk-forward GARCH(1,1) (zero mean, normal quasi-likelihood, refit every 21 sessions) with filtered-historical-simulation move-range probabilities. It beats every baseline under the declared rule and is well calibrated.
+- The scheduled-release adjustment is not used. The release-session variance boost is about 0.2 since 2016 but was unstable before; it can be re-tested later with the same rule.
+- GARCH-FHS is the benchmark for Layer 5, which tests whether macro variables add out-of-sample value.
