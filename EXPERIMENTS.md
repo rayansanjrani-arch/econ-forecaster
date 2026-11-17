@@ -257,3 +257,18 @@
 - `src/vol_scoring.py`: log returns, realized-variance targets (future returns only), QLIKE and MSE losses, window labels, moving-block bootstrap interval and the declared keep rule. Settings are in `src/config.py` (`VOL_*`, `MOVE_RANGE_EDGES_PCT`). Six fixture tests cover hand-checked targets, no look-ahead in targets, QLIKE being minimised at the true variance, window and burn-in labels, bootstrap reproducibility, and the keep rule (including a candidate that wins overall but only in 3 of 5 windows, which is not kept). 89 tests pass.
 - GLD data per window: burn-in 783 origins (2004-11-19 to 2007-12-31); W1 1,009; W2 1,006; W3 1,006; W4 1,006; W5 721 (to 2026-11-13). Mean next-day realized variance differs by window (W3 0.58, W2 1.11, W4 0.97, W1 2.18, W5 1.99 percent squared), so the windows cover calm and turbulent regimes.
 - GARCH (Task 3.3) needs a numerical optimiser. scipy is not installed in the project environment; the choice between adding scipy or the `arch` package to requirements and a numpy-only estimator is left to Task 3.3.
+
+## 2026-11-17: Task 3.2 plan — volatility baselines (declared before results)
+- Baselines, each a one-step variance forecast made at the close of session t from returns up to t (zero-mean squared returns):
+  - HV20: mean of the last 20 squared returns.
+  - HV60: mean of the last 60 squared returns.
+  - EWMA: variance(t+1) = 0.94 × variance(t) + 0.06 × return(t)², the fixed RiskMetrics lambda (not fitted), started from the mean of the first 60 squared returns.
+- Five-session forecast = 5 × one-step forecast for all three (no term structure).
+- Scored on W1-W5 with QLIKE (primary) and MSE (secondary) for h = 1 and h = 5. The best baseline per horizon is the one with the lowest full-period mean QLIKE; later models must beat it under the Task 3.1 keep rule.
+- Outputs: `reports/volatility/baseline_forecasts.csv` (per-origin forecasts, targets and losses) and `reports/volatility/baseline_scores.csv` (mean loss by model, horizon and window).
+
+## 2026-11-17: Task 3.2 result — EWMA is the baseline to beat
+- Run: `python src/run_vol_baselines.py` (outputs in `reports/volatility/`). 4,743 forecast origins, 2005-02-15 to 2026-11-06; scoring starts in 2008. The last five sessions are not scored because their 5-session targets are incomplete; both horizons use the same origins.
+- Full-period mean QLIKE, h = 1: EWMA 1.075, HV60 1.116, HV20 1.124. h = 5: EWMA 2.711, HV60 2.753, HV20 2.760. MSE gives the same order (h = 1: 14.84 vs 15.16 and 15.21).
+- EWMA beats HV20 in 5/5 windows at both horizons (block-bootstrap mean QLIKE difference h = 1: -0.050 [-0.068, -0.033]). It beats HV60 in 4/5, losing only the calm W3 2016-2019 (0.410 vs 0.395), with h = 1 difference -0.042 [-0.079, -0.012]. EWMA would itself pass the keep rule against either historical-volatility baseline.
+- Decision: EWMA (lambda 0.94) is the best baseline for both horizons. GARCH(1,1) and any later model must beat EWMA under the Task 3.1 keep rule. A fast-reacting estimator wins in turbulent windows; a slow one does slightly better in the calm window.
