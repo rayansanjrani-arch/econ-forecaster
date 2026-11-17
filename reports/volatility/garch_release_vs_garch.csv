@@ -1,0 +1,3 @@
+horizon,windows_won,mean_difference,ci_low,ci_high,keep
+1,3,-0.001669,-0.006186,0.0019,False
+5,4,-0.000669,-0.003467,0.00164,False
