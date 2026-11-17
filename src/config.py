@@ -158,3 +158,19 @@ CPI_RANDOM_SEED = 42
 def fred_csv_url(series_id):
     """Build a FRED graph CSV URL for a series identifier."""
     return f"{FRED_GRAPH_URL}?id={series_id}"
+
+# Layer 3 volatility forecasting (declared in EXPERIMENTS.md 2026-11-17 before any model)
+VOL_HORIZONS = (1, 5)
+VOL_REFIT_EVERY = 21
+VOL_WINDOWS = [
+    ("W1", "2008-01-01", "2011-12-31"),
+    ("W2", "2012-01-01", "2015-12-31"),
+    ("W3", "2016-01-01", "2019-12-31"),
+    ("W4", "2020-01-01", "2023-12-31"),
+    ("W5", "2024-01-01", "2100-12-31"),
+]
+VOL_KEEP_MIN_WINDOWS = 4
+VOL_BOOTSTRAP_BLOCK = 21
+VOL_BOOTSTRAP_RESAMPLES = 2_000
+VOL_BOOTSTRAP_SEED = 20261117
+MOVE_RANGE_EDGES_PCT = (0.5, 1.0, 2.0)

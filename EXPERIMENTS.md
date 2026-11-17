@@ -240,3 +240,20 @@
   - Layer 6: test whether the Employment Situation effect depends on the macro or policy regime.
   - Before FOMC events are studied, handle the 2:00 p.m. timing issue (GC=F daily close falls before the decision).
 - Layer 2 is complete as a descriptive study.
+
+## 2026-11-17: Layer 3 plan and Task 3.1 — volatility forecast targets, scoring and windows (declared before any model is fitted)
+- Layer 3 tasks (the roadmap gives Layer 3 as one paragraph; split here): 3.1 targets, scoring and windows; 3.2 20/60-day and EWMA baselines; 3.3 GARCH(1,1); 3.4 release-day feature without look-ahead; 3.5 move-range probabilities with Brier/log loss and calibration; 3.6 decision gate.
+- Series: GLD daily closes from 2004-11-18 (`data/raw/gold_gld_etf_daily_since_2004.csv`), primary because it gives about 22 years (several distinct regimes) with no futures rolls and was cross-checked against GC=F (Task 1.1a). GC=F from 2020-06-01 is a secondary check on the recent window only. Returns are close-to-close log returns in percent between observed sessions.
+- Forecast origin: the close of session t, using data up to and including t only. Horizons: h = 1 (next session) and h = 5 (next five sessions).
+- Target (realized variance): h = 1, the squared next-session return; h = 5, the sum of the next five squared returns. Forecasts are variances in the same units (percent squared).
+- Primary loss: QLIKE in the form L = log(F) + RV / F, where F is the forecast variance and RV the realized variance. This is defined when RV = 0 and ranks forecasts consistently with a noisy variance proxy. Secondary loss: MSE on variance. Lower is better for both.
+- Evaluation windows (non-overlapping, chronological; data before 2008 is burn-in only): W1 2008-2011, W2 2012-2015, W3 2016-2019, W4 2020-2023, W5 2024 to the end of data. A forecast belongs to the window of its origin date; a 5-session target must lie wholly inside the data.
+- Fitted models: re-estimated walk-forward on an expanding window using only data before the forecast origin; parameters are refit every 21 sessions. No parameter is chosen using evaluation-window data.
+- Keep rule (fixed now): a candidate is kept only if its mean QLIKE is lower than the best baseline's in at least 4 of the 5 windows, and the 95% moving-block bootstrap interval (block length 21 sessions, 2,000 resamples, seed 20261117) of the full-period mean QLIKE difference (candidate minus best baseline) is entirely below 0. The best baseline is the lowest full-period QLIKE among 20-day, 60-day and EWMA, chosen per horizon. That makes the bar as high as possible, since it is picked after seeing baseline results.
+- Move ranges for Task 3.5 (fixed now): next-session absolute return below 0.5%, 0.5-1%, 1-2%, and 2% or more.
+- Leakage rules: release dates enter only through calendars that were published before each release (BLS annual schedules; shutdown reschedules were announced before the new dates). No feature may use the close of session t+1 or later.
+
+## 2026-11-17: Task 3.1 result — scoring tools built and checked
+- `src/vol_scoring.py`: log returns, realized-variance targets (future returns only), QLIKE and MSE losses, window labels, moving-block bootstrap interval and the declared keep rule. Settings are in `src/config.py` (`VOL_*`, `MOVE_RANGE_EDGES_PCT`). Six fixture tests cover hand-checked targets, no look-ahead in targets, QLIKE being minimised at the true variance, window and burn-in labels, bootstrap reproducibility, and the keep rule (including a candidate that wins overall but only in 3 of 5 windows, which is not kept). 89 tests pass.
+- GLD data per window: burn-in 783 origins (2004-11-19 to 2007-12-31); W1 1,009; W2 1,006; W3 1,006; W4 1,006; W5 721 (to 2026-11-13). Mean next-day realized variance differs by window (W3 0.58, W2 1.11, W4 0.97, W1 2.18, W5 1.99 percent squared), so the windows cover calm and turbulent regimes.
+- GARCH (Task 3.3) needs a numerical optimiser. scipy is not installed in the project environment; the choice between adding scipy or the `arch` package to requirements and a numpy-only estimator is left to Task 3.3.
