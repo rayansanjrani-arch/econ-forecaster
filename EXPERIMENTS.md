@@ -299,3 +299,19 @@
 - h = 1: wins 3/5 windows (loses W1 and W3); full-period QLIKE difference -0.0017 [-0.0062, 0.0019] → not kept. On release-next origins alone QLIKE improves (1.2221 → 1.2098, n = 648); other origins are unchanged by construction. The gain is too small and too inconsistent across windows to pass.
 - h = 5: wins 4/5 windows (loses W3); difference -0.0007 [-0.0035, 0.0016]; the interval includes 0 → not kept.
 - Decision: GARCH(1,1) without the release feature remains the model to beat. The release boost is real on average but too small to improve forecasts reliably, which agrees with Layer 2. Recent windows (W4, W5) favour the adjustment; it can be re-tested once more live data has accrued, without changing the declared rule.
+
+## 2026-11-17: Task 3.5 plan — move-range probabilities and calibration (declared before results)
+- Target: the next session's absolute log return in percent, in the declared ranges: below 0.5, 0.5-1, 1-2, and 2 or more.
+- Primary candidate, GARCH filtered historical simulation: probabilities from the walk-forward GARCH(1,1) one-step volatility (Task 3.3 parameters from `garch_fit_log.csv`) combined with the empirical distribution of absolute standardized returns |z| = |return| / GARCH volatility. That distribution is computed at each refit from training data only (all returns up to the refit origin, using that refit's parameters). P(range) = share of training |z| × forecast volatility falling in the range. This keeps gold's fat tails without assuming a shape.
+- Secondary, reported but not used for the decision: GARCH with normally distributed returns.
+- Baseline (climatology): expanding-window frequencies of the four ranges using all returns up to the origin. This is the probability version of "no volatility model".
+- Scores: multi-category Brier score (sum over ranges of (p - outcome)²) as primary and log loss (minus log probability of the observed range, probabilities floored at 1e-6) as secondary; lower is better for both.
+- Keep rule: the Task 3.1 rule applied to the Brier score: better mean Brier than climatology in at least 4 of 5 windows, and a block-bootstrap interval of the mean difference entirely below 0.
+- Calibration (reported, not a pass/fail rule): for each range, forecasts grouped into probability bins (0-0.1, ..., 0.9-1) with mean forecast versus observed frequency and counts, plus the full-period mean forecast versus observed frequency per range.
+
+## 2026-11-17: Task 3.5 result — GARCH filtered-historical-simulation probabilities are kept and well calibrated
+- Run: `python src/run_vol_probabilities.py` (outputs `reports/volatility/move_range_*.csv`). 4,747 next-session forecasts, 2008-01-02 to 2026-11-12. Observed shares: below 0.5% 45.1%, 0.5-1% 26.8%, 1-2% 20.6%, 2% or more 7.5%. 108 tests pass, including a simulated fat-tailed GARCH check that the probabilities are calibrated and use no future returns.
+- Primary test (FHS, Brier): FHS 0.6558 vs climatology 0.6775. It wins 5/5 windows; mean difference -0.0217 [-0.0275, -0.0162] → kept. Log loss agrees (1.179 vs 1.233, 5/5 windows).
+- GARCH-normal is worse than FHS everywhere except W5 and wins only 3/5 windows against climatology on Brier. It puts too little probability on small moves (forecast 38.0% vs observed 45.1% below 0.5%) and too much on 1-2% (25.3% vs 20.6%). Gold's daily returns are more peaked and fat-tailed than normal; the empirical |z| distribution handles both.
+- Calibration (FHS, full period, mean forecast vs observed): below 0.5% 0.441 vs 0.451; 0.5-1% 0.270 vs 0.268; 1-2% 0.209 vs 0.206; 2% or more 0.080 vs 0.075. In reliability bins with at least 50 forecasts the gaps are mostly 0.01-0.03. The largest is in the 2%-or-more range at forecast 0.30-0.40 (0.337 forecast vs 0.237 observed, n = 59), where large-move probabilities run somewhat high in the most turbulent periods.
+- Decision: keep GARCH(1,1) + filtered historical simulation as the Layer 3 move-range forecaster.

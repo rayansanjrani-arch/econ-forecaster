@@ -1,0 +1,5 @@
+candidate,score,windows_won,mean_difference,ci_low,ci_high,keep,primary
+fhs,brier,5,-0.021688,-0.027523,-0.016213,True,True
+fhs,logloss,5,-0.054106,-0.067354,-0.041163,True,False
+normal,brier,3,-0.01273,-0.01863,-0.006711,False,False
+normal,logloss,4,-0.039875,-0.054198,-0.02471,True,False
